@@ -17,7 +17,6 @@ import net.canarymod.commandsys.Command;
 import net.canarymod.commandsys.CommandDependencyException;
 import net.canarymod.commandsys.CommandListener;
 import net.canarymod.logger.Logman;
-import net.canarymod.plugin.Plugin;
 
 //
 // This is a bit convoluted, but it will let you call the "buildMyHouse"
@@ -27,8 +26,7 @@ import net.canarymod.plugin.Plugin;
 // to make a 3D block.
 //
 
-public class BuildAHouse extends Plugin implements CommandListener {
-
+public class BuildAHouse extends GenericPlugin implements CommandListener {
 	public static Logman logger;
 	public static Location origin = null;
 	public static boolean firstHouse = true;
@@ -45,7 +43,7 @@ public class BuildAHouse extends Plugin implements CommandListener {
 					loc.setX(origin.getX() + offsetX + i);
 					loc.setZ(origin.getZ() + offsetZ + j);
 					loc.setY(origin.getY() + offsetY + k);
-					origin.getWorld().setBlockAt(loc, what);
+					setBlockAt(loc, what);
 				}
 			}
 		}
@@ -75,7 +73,6 @@ public class BuildAHouse extends Plugin implements CommandListener {
 	// Called by reader's code
 	// Minimum of 5 X 5
 	public static void buildMyHouse(int width, int height) {
-
 		// Floor the dimensions at no less than 5 X 5
 		if (width < 5) {
 			width = 5;
@@ -98,29 +95,25 @@ public class BuildAHouse extends Plugin implements CommandListener {
 		makeCube(1, 1, 1, width - 2, height - 2, BlockType.Air);
 
 		// Pop a door in one wall
-		Location door = new Location(origin.getWorld(), origin.getX() + (width / 2), origin.getY(), origin.getZ(), 0,
-				0);
+		Location door = new Location(origin.getWorld(), origin.getX() + (width / 2), origin.getY(), origin.getZ(), 0, 0);
 
 		// The door is two high, with a torch over the door
 		// Magic values to establish top and bottom of door.
-		// 64 is BlockType.WoodenDoor
+		door.setY(door.getY() + 1);
+		setBlockAt(door, BlockType.WoodenDoor.getId(), (short) 0x4); // bottom
 
 		door.setY(door.getY() + 1);
-		origin.getWorld().setBlockAt(door, (short) 64, (short) 0x4);// bottom
-
-		door.setY(door.getY() + 1);
-		origin.getWorld().setBlockAt(door, (short) 64, (short) 0x8);// top
+		setBlockAt(door, BlockType.WoodenDoor.getId(), (short) 0x8); // top
 
 		door.setY(door.getY() + 1);
 		door.setZ(door.getZ() + 1);
-		origin.getWorld().setBlockAt(door, BlockType.Torch);
-
-		// Move over to make next house if called in a loop.
-		origin.setX(origin.getX() + width);
+		setBlockAt(door, BlockType.Torch);
 	}
 
-	@Command(aliases = { "buildahouse" }, description = "Build a simple house for shelter", permissions = {
-			"" }, toolTip = "/buildahouse")
+	@Command(aliases = { "buildahouse" },
+			description = "Build a simple house for shelter",
+			permissions = { "" },
+			toolTip = "/buildahouse")
 	public void buildAHouseCommand(MessageReceiver caller, String[] parameters) {
 		if (caller instanceof Player) {
 			Player me = (Player) caller;

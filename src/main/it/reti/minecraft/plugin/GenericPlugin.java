@@ -6,7 +6,7 @@
  * We make no guarantees that this code is fit for any purpose. 
  * Visit http://www.pragmaticprogrammer.com/titles/ahmine2 for more book information.
  ***/
-package it.reti.minecraft.utilities;
+package it.reti.minecraft.plugin;
 
 import net.canarymod.Canary;
 import net.canarymod.api.entity.EntityType;
@@ -22,11 +22,11 @@ import net.canarymod.commandsys.CommandListener;
 import net.canarymod.logger.Logman;
 import net.canarymod.plugin.Plugin;
 
-public class EZPlugin extends Plugin implements CommandListener {
+public class GenericPlugin extends Plugin implements CommandListener {
 	/* Boilerplate methods for all of our plugins */
 	public static Logman logger;
 
-	public EZPlugin() {
+	public GenericPlugin() {
 		logger = getLogman();
 	}
 
@@ -53,6 +53,10 @@ public class EZPlugin extends Plugin implements CommandListener {
 	/* Warning, doing a Block.setType doesn't work as expected. */
 	public static void setBlockAt(Location loc, BlockType type) {
 		loc.getWorld().setBlockAt(loc, type);
+	}
+	
+	public static void setBlockAt(Location loc, short type, short c) {
+		loc.getWorld().setBlockAt(loc, type, c);
 	}
 
 	public static void playSound(Location loc, SoundEffect.Type type, double volume, double pitch) {
