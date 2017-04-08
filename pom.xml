@@ -1,54 +1,45 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-
 	<groupId>it.reti.minecraft</groupId>
 	<artifactId>minecraft-plugin</artifactId>
-	<version>1.0-SNAPSHOT</version>
-	<packaging>jar</packaging>
-
-	<description>Test plugin for Minecraft hackathon</description>
-
-	
-	<repositories>
-		<repository>
-			<id>vi-repo</id>
-	        <name>Visual Illusions Repository</name>
-			<url>https://mvnrepository.com</url>
-		</repository>
-	</repositories>
-
+	<version>0.0.1-SNAPSHOT</version>
 	<build>
-		<sourceDirectory>src/main/java</sourceDirectory>
-		<testSourceDirectory>src/test/java</testSourceDirectory>
+		<sourceDirectory>src/main</sourceDirectory>
+		<resources>
+			<resource>
+				<directory>src/resources</directory>
+				<excludes>
+					<exclude>**/*.java</exclude>
+				</excludes>
+			</resource>
+		</resources>
 		<plugins>
 			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>2.3.2</version>
+				<version>3.5.1</version>
 				<configuration>
-					<source>1.6</source>
-					<target>1.6</target>
+					<source />
+					<target />
 				</configuration>
 			</plugin>
+			<plugin>
+		      <groupId>org.apache.maven.plugins</groupId>
+		      <artifactId>maven-jar-plugin</artifactId>
+		      <version>2.3.1</version>
+		      <configuration>
+		        <outputDirectory>${project.basedir}/plugins</outputDirectory>
+		      </configuration>
+		    </plugin>
 		</plugins>
 	</build>
-
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-	</properties>
-
 	<dependencies>
 		<dependency>
-			<groupId>net.canarymod</groupId>
+			<groupId>CanaryMod</groupId>
 			<artifactId>CanaryMod</artifactId>
-			<version>1.8.0-1.2.1-SNAPSHOT</version>
+			<version>1.7.10</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/lib/CanaryMod-1.7.10-1.1.2.jar</systemPath>
 		</dependency>
 	</dependencies>
-	<name>minecraft-plugin</name>
-	<organization>
-		<name>Reti</name>
-		<url>http://www.reti.it</url>
-	</organization>
 </project>

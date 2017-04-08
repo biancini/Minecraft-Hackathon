@@ -2,3 +2,6 @@
 *.class
 **/worlds
 logs
+/bin/
+/target/
+*.jar
