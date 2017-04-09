@@ -5,3 +5,4 @@ logs
 /bin/
 /target/
 *.jar
+.metadata
