@@ -70,46 +70,6 @@ public class BuildAHouse extends GenericPlugin implements CommandListener {
 		logger.info("Stopping");
 	}
 
-	// Called by reader's code
-	// Minimum of 5 X 5
-	public static void buildMyHouse(int width, int height) {
-		// Floor the dimensions at no less than 5 X 5
-		if (width < 5) {
-			width = 5;
-		}
-		if (height < 5) {
-			height = 5;
-		}
-
-		if (firstHouse) {
-			// Center the first house on the player
-			origin.setY(origin.getY() - 1);
-			origin.setZ(origin.getZ() - (width / 2));
-			origin.setX(origin.getX() - (width / 2));
-			firstHouse = false;
-		}
-
-		// Set the whole area to wood
-		makeCube(0, 0, 0, width, height, BlockType.OakWood);
-		// Set the inside of the cube to air
-		makeCube(1, 1, 1, width - 2, height - 2, BlockType.Air);
-
-		// Pop a door in one wall
-		Location door = new Location(origin.getWorld(), origin.getX() + (width / 2), origin.getY(), origin.getZ(), 0, 0);
-
-		// The door is two high, with a torch over the door
-		// Magic values to establish top and bottom of door.
-		door.setY(door.getY() + 1);
-		setBlockAt(door, BlockType.WoodenDoor.getId(), (short) 0x4); // bottom
-
-		door.setY(door.getY() + 1);
-		setBlockAt(door, BlockType.WoodenDoor.getId(), (short) 0x8); // top
-
-		door.setY(door.getY() + 1);
-		door.setZ(door.getZ() + 1);
-		setBlockAt(door, BlockType.Torch);
-	}
-
 	@Command(aliases = { "buildahouse" },
 			description = "Build a simple house for shelter",
 			permissions = { "" },
@@ -120,9 +80,35 @@ public class BuildAHouse extends GenericPlugin implements CommandListener {
 			origin = me.getLocation();
 			firstHouse = true;
 
+			// Minimum size 5x5
 			int width = 5;
 			int height = 5;
-			BuildAHouse.buildMyHouse(width, height);
+
+			// Center the first house on the player
+			origin.setY(origin.getY() - 1);
+			origin.setZ(origin.getZ() - (width / 2));
+			origin.setX(origin.getX() - (width / 2));
+			firstHouse = false;
+
+			// Set the whole area to wood
+			makeCube(0, 0, 0, width, height, BlockType.OakWood);
+			// Set the inside of the cube to air
+			makeCube(1, 1, 1, width - 2, height - 2, BlockType.Air);
+
+			// Pop a door in one wall
+			Location door = new Location(origin.getWorld(), origin.getX() + (width / 2), origin.getY(), origin.getZ(), 0, 0);
+
+			// The door is two high, with a torch over the door
+			// Magic values to establish top and bottom of door.
+			door.setY(door.getY() + 1);
+			setBlockAt(door, BlockType.WoodenDoor.getId(), (short) 0x4); // bottom
+
+			door.setY(door.getY() + 1);
+			setBlockAt(door, BlockType.WoodenDoor.getId(), (short) 0x8); // top
+
+			door.setY(door.getY() + 1);
+			door.setZ(door.getZ() + 1);
+			setBlockAt(door, BlockType.Torch);
 		}
 	}
 }
