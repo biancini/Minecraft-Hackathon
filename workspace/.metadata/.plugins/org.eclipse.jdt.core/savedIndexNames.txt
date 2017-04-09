@@ -1,20 +1,4 @@
 INDEX VERSION 1.130+D:\projects\Minecraft-Hackathon\workspace\.metadata\.plugins\org.eclipse.jdt.core
-1789440775.index
-3405828175.index
-4048208616.index
-2392097046.index
-3993643590.index
-691630707.index
-1812459623.index
-3419168618.index
-3277137780.index
-3061396994.index
-2023629841.index
-1970984201.index
+3817213084.index
+4178589555.index
 1890577824.index
-400974875.index
-2808631912.index
-144788171.index
-2012920579.index
-336878178.index
-4016900838.index
