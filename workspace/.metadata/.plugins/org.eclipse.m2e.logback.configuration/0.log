@@ -1,0 +1,52 @@
+2017-04-09 18:42:23,623 [Worker-1] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2017-04-09 18:42:54,871 [Worker-1] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: it.reti.minecraft:minecraft-plugin:0.0.1-SNAPSHOT @ D:\projects\Minecraft-Hackathon\BuildAHouse\pom.xml.
+2017-04-09 18:42:55,889 [Worker-1] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-09 18:42:55,925 [Worker-1] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2017-04-09 18:42:55,934 [Worker-1] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-09 18:42:55,945 [Worker-1] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\projects\Minecraft-Hackathon\BuildAHouse\src\test\resources
+2017-04-09 18:42:56,525 [Worker-11] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: it.reti.minecraft:minecraft-plugin:0.0.1-SNAPSHOT @ D:\projects\Minecraft-Hackathon\BuildAHouse\pom.xml.
+2017-04-09 18:43:01,720 [Worker-4] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: it.reti.minecraft:minecraft-plugin:0.0.1-SNAPSHOT @ D:\projects\Minecraft-Hackathon\BuildAHouse\pom.xml.
+2017-04-09 18:43:02,106 [Worker-4] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-09 18:43:02,113 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2017-04-09 18:43:02,118 [Worker-4] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-09 18:43:02,123 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\projects\Minecraft-Hackathon\BuildAHouse\src\test\resources
+2017-04-09 18:43:13,770 [Worker-12] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: it.reti.minecraft:BuildAHouse:0.0.1-SNAPSHOT @ D:\projects\Minecraft-Hackathon\BuildAHouse\pom.xml.
+2017-04-09 18:43:14,055 [Worker-12] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-09 18:43:14,060 [Worker-12] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-04-09 18:43:14,062 [Worker-12] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-09 18:43:14,066 [Worker-12] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\projects\Minecraft-Hackathon\BuildAHouse\src\test\resources
+2017-04-09 18:43:21,765 [Worker-7] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: it.reti.minecraft:BuildAHouse:0.0.1-SNAPSHOT @ D:\projects\Minecraft-Hackathon\BuildAHouse\pom.xml.
+2017-04-09 18:43:21,877 [Worker-7] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-09 18:43:21,886 [Worker-7] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-04-09 18:43:21,896 [Worker-7] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-09 18:43:21,902 [Worker-7] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\projects\Minecraft-Hackathon\BuildAHouse\src\test\resources
+2017-04-09 18:45:29,637 [Worker-6] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-09 18:45:29,641 [Worker-6] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-04-09 18:45:29,643 [Worker-6] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-09 18:45:29,647 [Worker-6] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\projects\Minecraft-Hackathon\BuildAHouse\src\test\resources
+2017-04-09 18:46:20,422 [Worker-6] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-09 18:46:20,429 [Worker-6] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-04-09 18:46:20,430 [Worker-6] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-09 18:46:20,435 [Worker-6] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\projects\Minecraft-Hackathon\BuildAHouse\src\test\resources
+2017-04-09 18:46:26,321 [Worker-6] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: it.reti.minecraft:BuildAHouse:0.0.1-SNAPSHOT @ D:\projects\Minecraft-Hackathon\BuildAHouse\pom.xml.
+2017-04-09 18:46:26,432 [Worker-6] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-09 18:46:26,437 [Worker-6] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-04-09 18:46:26,439 [Worker-6] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-09 18:46:26,443 [Worker-6] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\projects\Minecraft-Hackathon\BuildAHouse\src\test\resources
+2017-04-09 18:46:41,995 [Worker-12] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-09 18:46:42,006 [Worker-12] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-04-09 18:46:42,008 [Worker-12] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-09 18:46:42,012 [Worker-12] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\projects\Minecraft-Hackathon\BuildAHouse\src\test\resources
+2017-04-09 18:47:01,358 [Worker-1] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-09 18:47:01,367 [Worker-1] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-04-09 18:47:01,368 [Worker-1] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-09 18:47:01,373 [Worker-1] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\projects\Minecraft-Hackathon\BuildAHouse\src\test\resources
+2017-04-09 18:47:19,578 [Worker-9] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: it.reti.minecraft:BuildAHouse:0.0.1-SNAPSHOT @ D:\projects\Minecraft-Hackathon\BuildAHouse\pom.xml.
+2017-04-09 18:47:19,693 [Worker-9] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-09 18:47:19,699 [Worker-9] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-04-09 18:47:19,700 [Worker-9] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-04-09 18:47:19,704 [Worker-9] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\projects\Minecraft-Hackathon\BuildAHouse\src\test\resources
+2017-04-09 18:47:54,829 [Worker-5] INFO  o.e.m.i.launch.MavenLaunchDelegate - D:\projects\Minecraft-Hackathon\BuildAHouse
+2017-04-09 18:47:54,830 [Worker-5] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn -B packages
+2017-04-09 18:48:07,370 [Worker-12] INFO  o.e.m.i.launch.MavenLaunchDelegate - D:\projects\Minecraft-Hackathon\BuildAHouse
+2017-04-09 18:48:07,370 [Worker-12] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn -B package
