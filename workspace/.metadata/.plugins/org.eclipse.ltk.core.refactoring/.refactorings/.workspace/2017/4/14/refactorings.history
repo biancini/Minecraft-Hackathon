@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Rename Java project &apos;minecraft-plugin&apos; to &apos;BuildAHouse&apos;&#x0D;&#x0A;- Original element: &apos;minecraft-plugin&apos;&#x0D;&#x0A;- Renamed element: &apos;minecraft-plugin&apos;&#x0D;&#x0A;- Update references to refactored element" description="Rename Java project &apos;minecraft-plugin&apos;" flags="7" id="org.eclipse.jdt.ui.rename.java.project" input="=minecraft-plugin" name="BuildAHouse" references="true" stamp="1491756181144" version="1.0"/>
-</session>
