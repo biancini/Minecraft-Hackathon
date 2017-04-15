@@ -3,6 +3,7 @@
 **/worlds
 logs
 /bin/
-/target/
+target
 *.jar
 .metadata
+workspace

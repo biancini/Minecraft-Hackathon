@@ -1,4 +1,4 @@
-main-class = it.reti.minecraft.plugin.HackathonPlugin
+main-class = it.reti.minecraft.plugin.hackathon.HackathonPlugin
 name = HackathonPlugin
-author = AndyHunt, Learn to Program with Minecraft Plugins
+author = Andrea Biancini <andrea.biancini@gmail.com>
 version = 1.0
