@@ -3,4 +3,8 @@
     <id auto-increment="true" data-type="INTEGER" column-type="PRIMARY" is-list="false">1</id>
     <player auto-increment="false" data-type="STRING" column-type="NORMAL" is-list="false">null</player>
   </entry>
+  <entry>
+    <id auto-increment="true" data-type="INTEGER" column-type="PRIMARY" is-list="false">2</id>
+    <player auto-increment="false" data-type="STRING" column-type="NORMAL" is-list="false">974edd49-b27b-4740-ad6e-b488303395e0</player>
+  </entry>
 </operators>

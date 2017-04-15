@@ -50,6 +50,10 @@ public class SamplePlugin extends Plugin {
 			}
 		}
 		
+		logger.warn("Se non lo hai già fatto ricordati di darti i permessi di operatore.\n"
+				+ "Per darti i permessi di operatore è necessario dare il seguente comando al server:\n"
+				+ "op [Username]");
+		
 		return true;
 	}
 

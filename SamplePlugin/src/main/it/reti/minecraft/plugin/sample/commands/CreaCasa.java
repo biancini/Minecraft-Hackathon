@@ -50,7 +50,7 @@ public class CreaCasa implements CommandListener {
 			creaCubo(origin, 1, 1, 1, width - 2, height - 2, BlockType.Air);
 
 			// Crea una porta nel muro
-			Location loc = me.getLocation();
+			Location loc = new Location(origin.getWorld(), origin.getX() + (width / 2), origin.getY(), origin.getZ(), 0, 0);
 
 			// La porta viene creata attraverso la creazione di due blocchi.
 			// Due valori "magici" sono impostati per segnalare la parte bassa e qualla alta della porta.
