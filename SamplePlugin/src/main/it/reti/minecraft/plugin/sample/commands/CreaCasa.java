@@ -9,23 +9,7 @@ import net.canarymod.commandsys.Command;
 import net.canarymod.commandsys.CommandListener;
 
 public class CreaCasa implements CommandListener {
-	private void creaCubo(Location origin, int offsetX, int offsetY, int offsetZ, int width, int height, BlockType type) {
-		int i, j, k;
-		Location loc = new Location(origin.getWorld(), 0, 0, 0, 0, 0);
-
-		// Crea un cubo facendo tre cicli for annidati (uno per la x, uno per la y e uno per la z).
-		for (i = 0; i < width; i++) {
-			for (j = 0; j < width; j++) {
-				for (k = 0; k < height; k++) {
-					loc.setX(origin.getX() + offsetX + i);
-					loc.setZ(origin.getZ() + offsetZ + j);
-					loc.setY(origin.getY() + offsetY + k);
-					
-					HelperFunctions.impostaBlocco(loc, type);
-				}
-			}
-		}
-	}
+	
 	@Command(aliases = { "creacasa" },
 			description = "Costruisci una semplice casa per ripararsi dai mostri!",
 			permissions = { "" },
@@ -63,6 +47,24 @@ public class CreaCasa implements CommandListener {
 			loc.setY(loc.getY() + 1);
 			loc.setZ(loc.getZ() + 1);
 			HelperFunctions.impostaBlocco(loc, BlockType.Torch);
+		}
+	}
+	
+	private void creaCubo(Location origin, int offsetX, int offsetY, int offsetZ, int width, int height, BlockType type) {
+		int i, j, k;
+		Location loc = new Location(origin.getWorld(), 0, 0, 0, 0, 0);
+
+		// Crea un cubo facendo tre cicli for annidati (uno per la x, uno per la y e uno per la z).
+		for (i = 0; i < width; i++) {
+			for (j = 0; j < width; j++) {
+				for (k = 0; k < height; k++) {
+					loc.setX(origin.getX() + offsetX + i);
+					loc.setZ(origin.getZ() + offsetZ + j);
+					loc.setY(origin.getY() + offsetY + k);
+					
+					HelperFunctions.impostaBlocco(loc, type);
+				}
+			}
 		}
 	}
 	

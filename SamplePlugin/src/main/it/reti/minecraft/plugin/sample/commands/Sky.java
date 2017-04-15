@@ -10,6 +10,7 @@ import net.canarymod.commandsys.Command;
 import net.canarymod.commandsys.CommandListener;
 
 public class Sky implements CommandListener {
+	
 	@Command(aliases = { "sky" },
 			description = "Fa volare tutte le creature viventi del tuo mondo!",
 			permissions = { "" },
