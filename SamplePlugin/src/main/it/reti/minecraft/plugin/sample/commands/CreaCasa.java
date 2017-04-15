@@ -30,7 +30,7 @@ public class CreaCasa implements CommandListener {
 			description = "Costruisci una semplice casa per ripararsi dai mostri!",
 			permissions = { "" },
 			toolTip = "/creacasa")
-	public void buildAHouseCommand(MessageReceiver caller, String[] parameters) {
+	public void creaCasa(MessageReceiver caller, String[] parameters) {
 		if (caller instanceof Player) {
 			Player me = (Player) caller;
 			Location origin = me.getLocation();

@@ -3,6 +3,7 @@ package it.reti.minecraft.plugin.sample;
 import net.canarymod.Canary;
 import net.canarymod.api.entity.EntityType;
 import net.canarymod.api.entity.living.EntityLiving;
+import net.canarymod.api.entity.living.LivingBase;
 import net.canarymod.api.factory.EntityFactory;
 import net.canarymod.api.world.World;
 import net.canarymod.api.world.blocks.BlockType;
@@ -80,6 +81,23 @@ public class HelperFunctions {
 	public static void creaParticella(Location loc, Particle.Type type) {
 		World w = loc.getWorld();
 		w.spawnParticle(new Particle(loc.getX(), loc.getY(), loc.getZ(), type));
+	}
+	
+	/**
+	 * Metodo che fa svolazzare un entità.
+	 * 
+	 * @param player il giocatore che lo richiama.
+	 * @param entity l'entità da far svolazzare.
+	 * @param factor fattore che indica la dimensione del volo.
+	 */
+	public static void svolazza(LivingBase player, LivingBase entity, double factor) {
+		double pitch = (player.getPitch() + 90.0F) * Math.PI / 180.0D;
+		double rot = (player.getRotation() + 90.0F) * Math.PI / 180.0D;
+		double x = Math.sin(pitch) * Math.cos(rot);
+		double z = Math.sin(pitch) * Math.sin(rot);
+		double y = Math.cos(pitch);
+
+		entity.moveEntity(x * factor, y + 0.5, z * factor);
 	}
 
 }
