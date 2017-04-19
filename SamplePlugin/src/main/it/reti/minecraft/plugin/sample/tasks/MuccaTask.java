@@ -13,6 +13,7 @@ public class MuccaTask extends ServerTask {
 		this.cow = cow;
 	}
 	
+	@Override
 	public void run() {
 		if (cow.isOnGround()) {
 			Location loc = cow.getLocation();
