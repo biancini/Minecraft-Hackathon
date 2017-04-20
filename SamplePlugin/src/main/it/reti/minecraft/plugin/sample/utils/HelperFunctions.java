@@ -1,4 +1,4 @@
-package it.reti.minecraft.plugin.sample;
+package it.reti.minecraft.plugin.sample.utils;
 
 import net.canarymod.Canary;
 import net.canarymod.api.entity.EntityType;

@@ -3,9 +3,12 @@ package it.reti.minecraft.plugin.hackathon;
 import java.util.ArrayList;
 import java.util.List;
 
+import it.reti.minecraft.plugin.hackathon.utils.IHook;
 import net.canarymod.Canary;
 import net.canarymod.commandsys.CommandDependencyException;
 import net.canarymod.commandsys.CommandListener;
+import net.canarymod.hook.HookHandler;
+import net.canarymod.hook.player.ItemUseHook;
 import net.canarymod.logger.Logman;
 import net.canarymod.plugin.Plugin;
 
@@ -19,8 +22,10 @@ import net.canarymod.plugin.Plugin;
  * @author Andrea Biancini <andrea.biancini@gmail.com>
  */
 public class HackathonPlugin extends Plugin {
+	
 	protected static Logman logger;
 	List<CommandListener> commands;
+	private List<IHook> hooks;
 
 	/***
 	 * Costruttore di default per creare il plugin.
@@ -30,6 +35,7 @@ public class HackathonPlugin extends Plugin {
 		logger = getLogman();
 		commands = new ArrayList<CommandListener>();
 		// Registra eventuali comandi qui come fatto nel sample plugin.
+		// Registra eventuali hook qui come fatto nel sample plugin.
 	}
 
 	/***
@@ -61,5 +67,16 @@ public class HackathonPlugin extends Plugin {
 	public void disable() {
 		logger.info("Disabilito il plugin.");
 		Canary.commands().unregisterCommands(this);
+	}
+	
+	/**
+	 * Metodo che viene richiamato quando si verifica un evento.
+	 * @param event l'evento sollevato dal server Minecraft.
+	 */
+	@HookHandler
+	public void onInteract(ItemUseHook event) {
+		for (IHook hook : hooks) {			
+			hook.onInteract(event);
+		}
 	}
 }

@@ -7,13 +7,9 @@ import it.reti.minecraft.plugin.sample.commands.CreaCasa;
 import it.reti.minecraft.plugin.sample.commands.Mandria;
 import it.reti.minecraft.plugin.sample.commands.Rigenera;
 import it.reti.minecraft.plugin.sample.commands.Sky;
-import it.reti.minecraft.plugin.sample.tasks.MuccaTask;
+import it.reti.minecraft.plugin.sample.hooks.LeatherHook;
+import it.reti.minecraft.plugin.sample.utils.IHook;
 import net.canarymod.Canary;
-import net.canarymod.api.entity.EntityType;
-import net.canarymod.api.entity.living.animal.Cow;
-import net.canarymod.api.entity.living.humanoid.Player;
-import net.canarymod.api.inventory.ItemType;
-import net.canarymod.api.world.position.Location;
 import net.canarymod.commandsys.CommandDependencyException;
 import net.canarymod.commandsys.CommandListener;
 import net.canarymod.hook.HookHandler;
@@ -21,7 +17,6 @@ import net.canarymod.hook.player.ItemUseHook;
 import net.canarymod.logger.Logman;
 import net.canarymod.plugin.Plugin;
 import net.canarymod.plugin.PluginListener;
-import net.canarymod.tasks.ServerTask;
 
 /***
  * Classe per implementare un plugin di Minecraft.
@@ -33,10 +28,10 @@ import net.canarymod.tasks.ServerTask;
  * @author Andrea Biancini <andrea.biancini@gmail.com>
  */
 public class SamplePlugin extends Plugin implements PluginListener {
+
 	protected static Logman logger;
-	
-	List<CommandListener> commands;
-	List<ServerTask> tasks;
+	private List<CommandListener> commands;
+	private List<IHook> hooks;
 
 	/***
 	 * Costruttore di default per creare il plugin.
@@ -50,6 +45,9 @@ public class SamplePlugin extends Plugin implements PluginListener {
 		commands.add(new Sky());
 		commands.add(new Mandria());
 		commands.add(new Rigenera());
+		
+		hooks = new ArrayList<IHook>();
+		hooks.add(new LeatherHook());
 	}
 
 	/***
@@ -87,19 +85,14 @@ public class SamplePlugin extends Plugin implements PluginListener {
 		Canary.commands().unregisterCommands(this);
 	}
 	
+	/**
+	 * Metodo che viene richiamato quando si verifica un evento.
+	 * @param event l'evento sollevato dal server Minecraft.
+	 */
 	@HookHandler
 	public void onInteract(ItemUseHook event) {
-		Player player = event.getPlayer();
-
-		if (player.getItemHeld().getType() == ItemType.Leather) {
-			Location loc = player.getLocation();
-			loc.setY(loc.getY() + 2);
-
-			Cow victim = (Cow) HelperFunctions.creaEssereVivente(loc, EntityType.COW);
-			Canary.getServer().addSynchronousTask(new MuccaTask(victim));
-
-			HelperFunctions.svolazza(player, victim, 3);
-			victim.setFireTicks(600);
+		for (IHook hook : hooks) {			
+			hook.onInteract(event);
 		}
 	}
 }

@@ -1,6 +1,6 @@
 package it.reti.minecraft.plugin.sample.commands;
 
-import it.reti.minecraft.plugin.sample.HelperFunctions;
+import it.reti.minecraft.plugin.sample.utils.HelperFunctions;
 import net.canarymod.api.entity.living.humanoid.Player;
 import net.canarymod.api.world.blocks.BlockType;
 import net.canarymod.api.world.position.Location;
