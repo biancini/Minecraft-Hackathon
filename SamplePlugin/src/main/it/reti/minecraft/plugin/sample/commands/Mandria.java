@@ -14,7 +14,7 @@ public class Mandria implements CommandListener {
 	@Command(aliases = { "mandria" },
 			description = "Crea una mandria di mucche!",
 			permissions = { "" },
-			min = 2, // Numero di argomenti del comendo
+			min = 2, // Numero di argomenti del comando
 			toolTip = "/mandria <numero di mucche>")
 	public void creaMandria(MessageReceiver caller, String[] parameters) {
 		if (caller instanceof Player) {
