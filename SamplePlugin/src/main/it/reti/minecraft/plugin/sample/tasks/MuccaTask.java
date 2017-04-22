@@ -6,19 +6,20 @@ import net.canarymod.api.world.position.Location;
 import net.canarymod.tasks.ServerTask;
 
 public class MuccaTask extends ServerTask {
-	private Cow cow;
+	private Cow cow = null;
 	
 	public MuccaTask(Cow cow) {
 		super(Canary.getServer(), 0, true);
 		this.cow = cow;
 	}
 	
+	@Override
 	public void run() {
 		if (cow.isOnGround()) {
 			Location loc = cow.getLocation();
 			cow.setHealth(0);
 			cow.kill();
-			cow.getWorld().makeExplosion(cow,  loc.getX(), loc.getY(), loc.getZ(), 2.0f, true);
+			cow.getWorld().makeExplosion(cow, loc.getX(), loc.getY(), loc.getZ(), 2.0f, true);
 			Canary.getServer().removeSynchronousTask(this);
 		}
 		else {
