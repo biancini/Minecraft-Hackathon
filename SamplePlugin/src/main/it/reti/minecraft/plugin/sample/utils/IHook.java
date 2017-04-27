@@ -1,9 +1,9 @@
 package it.reti.minecraft.plugin.sample.utils;
 
-import net.canarymod.hook.player.ItemUseHook;
+import net.canarymod.hook.Hook;
 
 public interface IHook {
 	
-	public void onInteract(ItemUseHook event);
+	public void onInteract(Hook event);
 	
 }

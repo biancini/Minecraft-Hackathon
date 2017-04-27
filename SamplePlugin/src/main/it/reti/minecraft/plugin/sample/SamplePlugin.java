@@ -12,8 +12,8 @@ import it.reti.minecraft.plugin.sample.utils.IHook;
 import net.canarymod.Canary;
 import net.canarymod.commandsys.CommandDependencyException;
 import net.canarymod.commandsys.CommandListener;
+import net.canarymod.hook.Hook;
 import net.canarymod.hook.HookHandler;
-import net.canarymod.hook.player.ItemUseHook;
 import net.canarymod.logger.Logman;
 import net.canarymod.plugin.Plugin;
 import net.canarymod.plugin.PluginListener;
@@ -29,7 +29,7 @@ import net.canarymod.plugin.PluginListener;
  */
 public class SamplePlugin extends Plugin implements PluginListener {
 
-	protected static Logman logger;
+	public static Logman logger;
 	private List<CommandListener> commands;
 	private List<IHook> hooks;
 
@@ -90,7 +90,7 @@ public class SamplePlugin extends Plugin implements PluginListener {
 	 * @param event l'evento sollevato dal server Minecraft.
 	 */
 	@HookHandler
-	public void onInteract(ItemUseHook event) {
+	public void onInteract(Hook event) {
 		for (IHook hook : hooks) {			
 			hook.onInteract(event);
 		}
