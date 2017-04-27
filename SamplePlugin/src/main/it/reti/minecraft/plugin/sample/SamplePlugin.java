@@ -12,13 +12,14 @@ import it.reti.minecraft.plugin.sample.utils.IHook;
 import net.canarymod.Canary;
 import net.canarymod.commandsys.CommandDependencyException;
 import net.canarymod.commandsys.CommandListener;
+import net.canarymod.hook.CancelableHook;
 import net.canarymod.hook.Hook;
 import net.canarymod.hook.HookHandler;
 import net.canarymod.logger.Logman;
 import net.canarymod.plugin.Plugin;
 import net.canarymod.plugin.PluginListener;
 
-/***
+/**
  * Classe per implementare un plugin di Minecraft.
  * La classe include alcune funzioni che possono essere utilizzate per svolgere le funzionalità più comuni.
  * 
@@ -33,7 +34,7 @@ public class SamplePlugin extends Plugin implements PluginListener {
 	private List<CommandListener> commands;
 	private List<IHook> hooks;
 
-	/***
+	/**
 	 * Costruttore di default per creare il plugin.
 	 * Questo costruttore inizializza il logger che può essere usato per scrivere dei messaggi sulla console.
 	 */
@@ -50,7 +51,7 @@ public class SamplePlugin extends Plugin implements PluginListener {
 		hooks.add(new LeatherHook());
 	}
 
-	/***
+	/**
 	 * Metodo che viene richiamato quando il plugin viene inizializzato.
 	 */
 	@Override
@@ -74,7 +75,7 @@ public class SamplePlugin extends Plugin implements PluginListener {
 		return true;
 	}
 
-	/***
+	/**
 	 * Metodo che viene richiamato quando il plugin viene disabilitato.
 	 */
 	@Override
@@ -91,6 +92,15 @@ public class SamplePlugin extends Plugin implements PluginListener {
 	 */
 	@HookHandler
 	public void onInteract(Hook event) {
+		// Se l'evento è cancellabile, verifica se è stato cancellato.
+		// Nel caso sia stato cancellato esci dal metodo senza richiamare nessun hook.
+		if (event instanceof CancelableHook) {
+			CancelableHook c = (CancelableHook) event;
+			if (c.isCanceled()) {
+				return;
+			}
+		}
+		
 		for (IHook hook : hooks) {			
 			hook.onInteract(event);
 		}
