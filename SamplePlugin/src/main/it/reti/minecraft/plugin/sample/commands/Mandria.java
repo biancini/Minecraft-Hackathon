@@ -20,8 +20,9 @@ public class Mandria implements CommandListener {
 		if (caller instanceof Player) {
 			Player me = (Player) caller;
 			Location origin = me.getLocation();
+			int numMucche = Integer.parseInt(parameters[1]);
 
-			creaMucche(origin, 10, Integer.parseInt(parameters[1]));
+			creaMucche(origin, 10, numMucche);
 		}
 	}	
 	
