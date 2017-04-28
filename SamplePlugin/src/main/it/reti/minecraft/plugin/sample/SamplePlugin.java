@@ -8,13 +8,9 @@ import it.reti.minecraft.plugin.sample.commands.Mandria;
 import it.reti.minecraft.plugin.sample.commands.Rigenera;
 import it.reti.minecraft.plugin.sample.commands.Sky;
 import it.reti.minecraft.plugin.sample.hooks.LeatherHook;
-import it.reti.minecraft.plugin.sample.utils.IHook;
 import net.canarymod.Canary;
 import net.canarymod.commandsys.CommandDependencyException;
 import net.canarymod.commandsys.CommandListener;
-import net.canarymod.hook.CancelableHook;
-import net.canarymod.hook.Hook;
-import net.canarymod.hook.HookHandler;
 import net.canarymod.logger.Logman;
 import net.canarymod.plugin.Plugin;
 import net.canarymod.plugin.PluginListener;
@@ -28,11 +24,11 @@ import net.canarymod.plugin.PluginListener;
  * 
  * @author Andrea Biancini <andrea.biancini@gmail.com>
  */
-public class SamplePlugin extends Plugin implements PluginListener {
+public class SamplePlugin extends Plugin {
 
 	public static Logman logger;
 	private List<CommandListener> commands;
-	private List<IHook> hooks;
+	private List<PluginListener> hooks;
 
 	/**
 	 * Costruttore di default per creare il plugin.
@@ -47,7 +43,7 @@ public class SamplePlugin extends Plugin implements PluginListener {
 		commands.add(new Mandria());
 		commands.add(new Rigenera());
 		
-		hooks = new ArrayList<IHook>();
+		hooks = new ArrayList<PluginListener>();
 		hooks.add(new LeatherHook());
 	}
 
@@ -58,7 +54,9 @@ public class SamplePlugin extends Plugin implements PluginListener {
 	public boolean enable() {
 		logger.info("Avvio il plugin.");
 		
-		Canary.hooks().registerListener(this, this);
+		for (PluginListener pluginListener : hooks) {			
+			Canary.hooks().registerListener(pluginListener, this);
+		}
 		
 		for (CommandListener commandListener : commands) {			
 			try {
@@ -82,27 +80,10 @@ public class SamplePlugin extends Plugin implements PluginListener {
 	public void disable() {
 		logger.info("Disabilito il plugin.");
 		
-		Canary.hooks().unregisterPluginListener(this);
-		Canary.commands().unregisterCommands(this);
-	}
-	
-	/**
-	 * Metodo che viene richiamato quando si verifica un evento.
-	 * @param event l'evento sollevato dal server Minecraft.
-	 */
-	@HookHandler
-	public void onInteract(Hook event) {
-		// Se l'evento è cancellabile, verifica se è stato cancellato.
-		// Nel caso sia stato cancellato esci dal metodo senza richiamare nessun hook.
-		if (event instanceof CancelableHook) {
-			CancelableHook c = (CancelableHook) event;
-			if (c.isCanceled()) {
-				return;
-			}
+		for (PluginListener pluginListener : hooks) {			
+			Canary.hooks().unregisterPluginListener(pluginListener);
 		}
 		
-		for (IHook hook : hooks) {			
-			hook.onInteract(event);
-		}
+		Canary.commands().unregisterCommands(this);
 	}
 }

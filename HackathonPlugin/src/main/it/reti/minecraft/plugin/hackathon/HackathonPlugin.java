@@ -3,14 +3,12 @@ package it.reti.minecraft.plugin.hackathon;
 import java.util.ArrayList;
 import java.util.List;
 
-import it.reti.minecraft.plugin.hackathon.utils.IHook;
 import net.canarymod.Canary;
 import net.canarymod.commandsys.CommandDependencyException;
 import net.canarymod.commandsys.CommandListener;
-import net.canarymod.hook.HookHandler;
-import net.canarymod.hook.player.ItemUseHook;
 import net.canarymod.logger.Logman;
 import net.canarymod.plugin.Plugin;
+import net.canarymod.plugin.PluginListener;
 
 /***
  * Classe per implementare un plugin di Minecraft.
@@ -25,7 +23,7 @@ public class HackathonPlugin extends Plugin {
 	
 	protected static Logman logger;
 	List<CommandListener> commands;
-	private List<IHook> hooks;
+	private List<PluginListener> hooks;
 
 	/***
 	 * Costruttore di default per creare il plugin.
@@ -44,6 +42,10 @@ public class HackathonPlugin extends Plugin {
 	@Override
 	public boolean enable() {
 		logger.info("Avvio il plugin.");
+		
+		for (PluginListener pluginListener : hooks) {			
+			Canary.hooks().registerListener(pluginListener, this);
+		}
 		
 		for (CommandListener commandListener : commands) {			
 			try {
@@ -66,17 +68,11 @@ public class HackathonPlugin extends Plugin {
 	@Override
 	public void disable() {
 		logger.info("Disabilito il plugin.");
-		Canary.commands().unregisterCommands(this);
-	}
-	
-	/**
-	 * Metodo che viene richiamato quando si verifica un evento.
-	 * @param event l'evento sollevato dal server Minecraft.
-	 */
-	@HookHandler
-	public void onInteract(ItemUseHook event) {
-		for (IHook hook : hooks) {			
-			hook.onInteract(event);
+		
+		for (PluginListener pluginListener : hooks) {			
+			Canary.hooks().unregisterPluginListener(pluginListener);
 		}
+		
+		Canary.commands().unregisterCommands(this);
 	}
 }
