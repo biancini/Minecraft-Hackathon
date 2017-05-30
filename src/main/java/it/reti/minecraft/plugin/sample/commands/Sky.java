@@ -1,27 +1,47 @@
 package it.reti.minecraft.plugin.sample.commands;
 
-/*
-public class Sky implements CommandListener {
+import java.util.ArrayList;
+import java.util.List;
+
+import it.reti.minecraft.plugin.sample.helpers.Command;
+import it.reti.minecraft.plugin.sample.helpers.GenericCommand;
+import it.reti.minecraft.plugin.sample.helpers.Location;
+import net.minecraft.command.CommandException;
+import net.minecraft.command.ICommand;
+import net.minecraft.command.ICommandSender;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.server.MinecraftServer;
+import net.minecraft.world.World;
+
+@Command(aliases = { "sky" },
+	description = "Fa volare tutte le creature viventi del tuo mondo!",
+	registerInEventBus = true,
+	registerGameEvent = false)
+public class Sky extends GenericCommand implements ICommand {
 	
-	@Command(aliases = { "sky" },
-			description = "Fa volare tutte le creature viventi del tuo mondo!",
-			permissions = { "" },
-			toolTip = "/sky")
-	public void skyCommand(MessageReceiver caller, String[] parameters) {
-		if (caller instanceof Player) {
-			Player me = (Player) caller;
-			List<EntityLiving> list = me.getWorld().getEntityLivingList();
-			
-			for (EntityLiving target : list) {
-				if (!(target instanceof Player)) {
-					Location loc = target.getLocation();
-					double y = loc.getY();
-					// Aggiungi 50 alla coordinata y, porta in cielo l'essere vivente di 50 blocchi.
-					loc.setY(y + 50);
-					target.teleportTo(loc);
-				}
-			}
+	@Override
+	public void execute(MinecraftServer server, ICommandSender sender, String[] args) throws CommandException {
+		EntityPlayer me = (EntityPlayer) sender;
+		List<EntityLiving> list = getLivingEntities(me.getEntityWorld());
+		
+		for (EntityLiving target : list) {
+			Location loc = new Location(target);
+			double y = loc.getPosY();
+			// Aggiungi 50 alla coordinata y, porta in cielo l'essere vivente di 50 blocchi.
+			loc.setPosY(y + 50);
+			target.attemptTeleport(loc.getPosX(), loc.getPosY(), loc.getPosZ());
 		}
 	}
+	
+	private List<EntityLiving> getLivingEntities(World world) {
+			List<EntityLiving> entities = new ArrayList<EntityLiving>();
+			for (Entity entity : world.loadedEntityList) {
+				if (entity instanceof EntityLiving) {
+					entities.add((EntityLiving) entity);
+				}
+			}
+			return entities;
+	}
 }
-*/

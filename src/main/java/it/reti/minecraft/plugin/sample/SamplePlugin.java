@@ -7,6 +7,8 @@ import java.util.List;
 import org.apache.logging.log4j.Logger;
 
 import it.reti.minecraft.plugin.sample.commands.CreaCasa;
+import it.reti.minecraft.plugin.sample.commands.Rigenera;
+import it.reti.minecraft.plugin.sample.commands.Sky;
 import it.reti.minecraft.plugin.sample.helpers.Command;
 import it.reti.minecraft.plugin.sample.helpers.GenericCommand;
 import net.minecraft.command.ICommand;
@@ -35,7 +37,7 @@ public class SamplePlugin
     public static final String VERSION = "1.0";
 
 	public static Logger logger;
-	private List<ICommand> commands;
+	private List<GenericCommand> commands;
 
 	/**
 	 * Costruttore di default per creare il plugin.
@@ -44,11 +46,11 @@ public class SamplePlugin
 	public SamplePlugin() {
 		logger = FMLLog.getLogger();
 		
-		commands = new ArrayList<ICommand>();
+		commands = new ArrayList<GenericCommand>();
 		commands.add(new CreaCasa());
-		//commands.add(new Sky());
+		commands.add(new Sky());
 		//commands.add(new Mandria());
-		//commands.add(new Rigenera());
+		commands.add(new Rigenera());
 		
 		//hooks.add(new LeatherHook());
 	}
@@ -58,7 +60,7 @@ public class SamplePlugin
     {
 		logger.info("Avvio il plugin.");
 		
-		for (ICommand command : commands) {
+		for (GenericCommand command : commands) {
 			Command ann = (Command) command.getClass().getAnnotation(Command.class);
         	if (ann == null) continue;
         	
@@ -78,8 +80,10 @@ public class SamplePlugin
     
     @EventHandler
     public void registerCommands(FMLServerStartingEvent event) throws InstantiationException, IllegalAccessException, ClassNotFoundException {
-    	for (ICommand command : commands) {
-    		event.registerServerCommand(command);
+    	for (GenericCommand command : commands) {
+    		if (Arrays.asList(command.getClass().getInterfaces()).contains(ICommand.class.getName())) {
+        		event.registerServerCommand(command);
+        	}
         }
     }
 }

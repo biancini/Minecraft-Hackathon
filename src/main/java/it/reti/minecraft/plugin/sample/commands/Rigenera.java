@@ -1,20 +1,23 @@
 package it.reti.minecraft.plugin.sample.commands;
 
+import it.reti.minecraft.plugin.sample.helpers.Command;
+import it.reti.minecraft.plugin.sample.helpers.GenericCommand;
+import net.minecraft.command.CommandException;
+import net.minecraft.command.ICommand;
+import net.minecraft.command.ICommandSender;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.server.MinecraftServer;
 
-/*
-public class Rigenera implements CommandListener {
-	
-	@Command(aliases = { "rigenera" },
-			description = "Rigenera salute e azzera fame per il giocatore che lo invoca.",
-			permissions = { "" },
-			toolTip = "/rigenera")
-	public void creaCasa(MessageReceiver caller, String[] parameters) {
-		if (caller instanceof Player) {
-			Player me = (Player) caller;
-			me.setHunger(20);
-			me.setHealth(20);
-		}
+@Command(aliases = { "rigenera" },
+	description = "Rigenera salute per il giocatore che lo invoca.",
+	registerInEventBus = true,
+	registerGameEvent = false)
+public class Rigenera extends GenericCommand implements ICommand {
+
+	@Override
+	public void execute(MinecraftServer server, ICommandSender sender, String[] args) throws CommandException {
+		EntityPlayer me = (EntityPlayer) sender;
+		me.setHealth(20);
 	}
 	
 }
-*/
