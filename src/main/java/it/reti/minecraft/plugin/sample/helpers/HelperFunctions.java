@@ -1,9 +1,14 @@
 package it.reti.minecraft.plugin.sample.helpers;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.properties.IProperty;
+import net.minecraft.command.ICommandSender;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.MoverType;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.util.text.Style;
+import net.minecraft.util.text.TextComponentString;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 
 /**
@@ -20,14 +25,25 @@ public class HelperFunctions {
 	/**
 	 * Metodo per impostare un blocco in una determinata posizione.
 	 * 
-	 * @param loc
-	 *            la posizione in cui deve essere impostate il blocco.
-	 * @param type
-	 *            il tipo di blocco da impostare.
+	 * @param loc la posizione in cui deve essere impostate il blocco.
+	 * @param type il tipo di blocco da impostare.
 	 */
 	public static void impostaBlocco(Location loc, Block type) {
 		World w = loc.getWorld();
 		w.setBlockState(loc.getPos(), type.getBlockState().getBaseState());
+	}
+	
+	/**
+	 * Metodo per impostare un blocco in una determinata posizione.
+	 * 
+	 * @param loc la posizione in cui deve essere impostate il blocco.
+	 * @param type il tipo di blocco da impostare.
+	 * @param flag il flag che indica il block state
+	 */
+	public static <T extends Comparable<T>, V extends T>  void impostaBlocco(Location loc, Block type, IProperty<T> property, V value) {
+		World w = loc.getWorld();
+	    
+		w.setBlockState(loc.getPos(), type.getBlockState().getBaseState().withProperty(property, value));
 	}
 
 	/**
@@ -39,7 +55,7 @@ public class HelperFunctions {
 	 *            il tipo di essere vivente da creare.
 	 * @return l'essere vivente creato.
 	 */
-	public static EntityLiving creaEssereVivente(Location loc, Class<EntityLiving> type) {
+	public static EntityLiving creaEssereVivente(Location loc, Class<? extends EntityLiving> type) {
 		try {
 			EntityLiving living = type.getConstructor(World.class).newInstance(loc.getWorld());
 			living.setLocationAndAngles(loc.getPosX(), loc.getPosY(), loc.getPosZ(), 0, 0);
@@ -68,6 +84,17 @@ public class HelperFunctions {
 		double y = Math.cos(pitch);
 
 		entity.move(MoverType.PLAYER, x * factor, y + 0.5, z * factor);
+	}
+	
+	/**
+	 * Metodo che manda un messaggio di errore all'utente.
+	 * 
+	 * @param sender l'oggetto che deve inviare l'errore.
+	 * @param message il messaggio di errore
+	 */
+	public static void sendErrorMessage(ICommandSender sender, String message) {
+		Style red = new Style().setColor(TextFormatting.DARK_RED);
+		sender.sendMessage(new TextComponentString(message).setStyle(red));
 	}
 
 }

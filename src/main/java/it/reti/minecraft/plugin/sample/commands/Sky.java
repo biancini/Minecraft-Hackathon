@@ -31,7 +31,7 @@ public class Sky extends GenericCommand implements ICommand {
 			double y = loc.getPosY();
 			// Aggiungi 50 alla coordinata y, porta in cielo l'essere vivente di 50 blocchi.
 			loc.setPosY(y + 50);
-			target.attemptTeleport(loc.getPosX(), loc.getPosY(), loc.getPosZ());
+			target.setPositionAndUpdate(loc.getPosX(), loc.getPosY(), loc.getPosZ());
 		}
 	}
 	

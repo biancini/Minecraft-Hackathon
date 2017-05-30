@@ -29,9 +29,7 @@ Il plugin implementa diverse funzionalit&agrave; d'esempio, di seguito elencate:
 Il progetto pu&ograve; essere compilato come un semplice programma java, si consiglia l'utilizo di un IDE, come Eclipse, in grado di gestire automaticamente i progetti gradle.
 
 ## HackathonPlugin
-Questa cartella contiene i fiels necessari a definire un altro plugin che conterr&agrave; il codice realizzato durante l'hackathon.
-
-Il progetto pu&ograve; essere compilato come un semplice programma java, si consiglia l'utilizo di un IDE, come Eclipse, in grado di gestire automaticamente i progetti gradle.
+Partendo dal sample plugin potete modificarlo, copiarlo e riadattarlo in modo da creare il plugin che preferite guidati solo dalla vostra fantasia!
 
 
 # Source installation information for modders

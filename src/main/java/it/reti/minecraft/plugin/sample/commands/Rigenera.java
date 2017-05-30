@@ -17,7 +17,7 @@ public class Rigenera extends GenericCommand implements ICommand {
 	@Override
 	public void execute(MinecraftServer server, ICommandSender sender, String[] args) throws CommandException {
 		EntityPlayer me = (EntityPlayer) sender;
-		me.setHealth(20);
+		me.setHealth(me.getMaxHealth());
 	}
 	
 }

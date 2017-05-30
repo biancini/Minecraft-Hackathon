@@ -7,6 +7,7 @@ import java.util.List;
 import org.apache.logging.log4j.Logger;
 
 import it.reti.minecraft.plugin.sample.commands.CreaCasa;
+import it.reti.minecraft.plugin.sample.commands.Mandria;
 import it.reti.minecraft.plugin.sample.commands.Rigenera;
 import it.reti.minecraft.plugin.sample.commands.Sky;
 import it.reti.minecraft.plugin.sample.helpers.Command;
@@ -49,7 +50,7 @@ public class SamplePlugin
 		commands = new ArrayList<GenericCommand>();
 		commands.add(new CreaCasa());
 		commands.add(new Sky());
-		//commands.add(new Mandria());
+		commands.add(new Mandria());
 		commands.add(new Rigenera());
 		
 		//hooks.add(new LeatherHook());
@@ -81,7 +82,7 @@ public class SamplePlugin
     @EventHandler
     public void registerCommands(FMLServerStartingEvent event) throws InstantiationException, IllegalAccessException, ClassNotFoundException {
     	for (GenericCommand command : commands) {
-    		if (Arrays.asList(command.getClass().getInterfaces()).contains(ICommand.class.getName())) {
+    		if (Arrays.asList(command.getClass().getInterfaces()).contains(ICommand.class)) {
         		event.registerServerCommand(command);
         	}
         }

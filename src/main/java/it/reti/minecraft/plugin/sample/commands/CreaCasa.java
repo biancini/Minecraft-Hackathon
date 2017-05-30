@@ -5,6 +5,8 @@ import it.reti.minecraft.plugin.sample.helpers.GenericCommand;
 import it.reti.minecraft.plugin.sample.helpers.HelperFunctions;
 import it.reti.minecraft.plugin.sample.helpers.Location;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockDoor.EnumDoorHalf;
+import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommand;
 import net.minecraft.command.ICommandSender;
@@ -45,10 +47,11 @@ public class CreaCasa extends GenericCommand implements ICommand {
 		// La porta viene creata attraverso la creazione di due blocchi.
 		// Due valori "magici" sono impostati per segnalare la parte bassa e
 		// qualla alta della porta.
+		PropertyEnum<EnumDoorHalf> HALF = PropertyEnum.create("half", EnumDoorHalf.class);
 		loc.setPosY(loc.getPosY() + 1);
-		HelperFunctions.impostaBlocco(loc, Blocks.OAK_DOOR);
+		HelperFunctions.impostaBlocco(loc, Blocks.OAK_DOOR, HALF, EnumDoorHalf.LOWER); //parte bassa
 		loc.setPosY(loc.getPosY() + 1);
-		HelperFunctions.impostaBlocco(loc, Blocks.OAK_DOOR);
+		HelperFunctions.impostaBlocco(loc, Blocks.OAK_DOOR, HALF, EnumDoorHalf.UPPER); //parte alta
 
 		// Metti una torcia sopra la porta
 		loc.setPosY(loc.getPosY() + 1);
