@@ -8,6 +8,14 @@ Per realizzare un plugin, inoltre, &egrave; necessario installare il Java Develo
 
 Il server Minecraft &egrave; gi&agrave; disponibile all'interno di questo progetto, insieme ad esso questo progetto contiene anche un plugin d'esempio che mostri le possibilit&agrave; di implementazione offerte da CanaryMod e un progetto che idealmente dovr&agrave; essere utilizzato come base di partenza per lo sviluppo dell'hackathon.
 
+## preparazione workspace
+Per preparare il workspace in modo che possa essere aperto da Eclipe, &egrave; necessario usare il comando:
+``
+gradlew setupDecompWorkspace eclipse
+``
+
+In questo modo verr&agrave; inizializzato l'ambiete Forge con le librerie di Minecraft e verr&agrave; inizializzato il workspace per l'apertura con Eclipse.
+
 ## server
 Questa cartella contiene il server Minecraft realizzato da Forge. Per startare Minecraft, &egrave; possibile usare il comando:
 ``

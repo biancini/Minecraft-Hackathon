@@ -14,7 +14,6 @@ import it.reti.minecraft.plugin.sample.helpers.Command;
 import it.reti.minecraft.plugin.sample.helpers.GenericCommand;
 import net.minecraft.command.ICommand;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.FMLLog;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
@@ -25,8 +24,8 @@ import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
  * Classe per implementare un plugin di Minecraft.
  * La classe include alcune funzioni che possono essere utilizzate per svolgere le funzionalità più comuni.
  * 
- * La documentazione sulla libreria Canary è navigabile qui:
- * http://docs.visualillusionsent.net/CanaryLib/1.0-RC-3/overview-summary.html
+ * La documentazione sulla libreria Forge è navigabile qui:
+ * http://mcforge.readthedocs.io/en/latest/
  * 
  * @author Andrea Biancini <andrea.biancini@gmail.com>
  */
@@ -65,13 +64,9 @@ public class SamplePlugin
 			Command ann = (Command) command.getClass().getAnnotation(Command.class);
         	if (ann == null) continue;
         	
-        	if (ann.registerInEventBus()) {
+        	if (ann.registerInEventBus() || ann.registerGameEvent()) {
         		MinecraftForge.EVENT_BUS.register(command);
         	}
-        	
-			if (ann.registerGameEvent()) {
-				FMLCommonHandler.instance().bus().register(command);
-			}
         }
         
         logger.warn("Se non lo hai già fatto ricordati di darti i permessi di operatore.\n"
