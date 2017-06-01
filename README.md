@@ -25,7 +25,7 @@ Se si utilizza Eclipse, &egrave; possibile lanciare il server anche richiamando 
 
 ## SamplePlugin
 Questa cartella contiene i files necessari a definire un plugin di esempio che mostra alcune funzionalit&agrave; di Forge.
-In particolare il plugin implementa diverse funzionalità richiamabili con un comando dalla chat del gioco. Inoltre il plugin crea un task asincrono che viene eseguito automaticamente dal server e registra un listener in grado di percepire la presenza di evento nel gioco per effettuare delle operazioni quando si verificano determinati eventi.
+In particolare il plugin implementa diverse funzionalitÃ  richiamabili con un comando dalla chat del gioco. Inoltre il plugin crea un task asincrono che viene eseguito automaticamente dal server e registra un listener in grado di percepire la presenza di evento nel gioco per effettuare delle operazioni quando si verificano determinati eventi.
 
 Il plugin implementa diverse funzionalit&agrave; d'esempio, di seguito elencate:
 - con il comando `/creacasa` verr&agrave; creata una casa (5x5) di legno attorno al giocatore;
