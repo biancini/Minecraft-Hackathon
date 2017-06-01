@@ -69,12 +69,9 @@ public class HelperFunctions {
 	/**
 	 * Metodo che fa svolazzare un entità.
 	 * 
-	 * @param player
-	 *            il giocatore che lo richiama.
-	 * @param entity
-	 *            l'entità da far svolazzare.
-	 * @param factor
-	 *            fattore che indica la dimensione del volo.
+	 * @param player il giocatore che lo richiama.
+	 * @param entity l'entità da far svolazzare.
+	 * @param factor fattore che indica la dimensione del volo.
 	 */
 	public static void svolazza(EntityPlayer player, EntityLiving entity, double factor) {
 		double pitch = (player.cameraPitch + 90.0F) * Math.PI / 180.0D;
