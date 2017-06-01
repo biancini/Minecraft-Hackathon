@@ -6,6 +6,7 @@ import net.minecraft.command.ICommandSender;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.MoverType;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.Style;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextFormatting;
@@ -25,25 +26,24 @@ public class HelperFunctions {
 	/**
 	 * Metodo per impostare un blocco in una determinata posizione.
 	 * 
+	 * @param w il mondo in cui si trova il giocatore
 	 * @param loc la posizione in cui deve essere impostate il blocco.
 	 * @param type il tipo di blocco da impostare.
 	 */
-	public static void impostaBlocco(Location loc, Block type) {
-		World w = loc.getWorld();
-		w.setBlockState(loc.getPos(), type.getBlockState().getBaseState());
+	public static void impostaBlocco(World w, BlockPos pos, Block type) {
+		w.setBlockState(pos, type.getBlockState().getBaseState());
 	}
 	
 	/**
 	 * Metodo per impostare un blocco in una determinata posizione.
 	 * 
+	 * @param w il mondo in cui si trova il giocatore
 	 * @param loc la posizione in cui deve essere impostate il blocco.
 	 * @param type il tipo di blocco da impostare.
 	 * @param flag il flag che indica il block state
 	 */
-	public static <T extends Comparable<T>, V extends T>  void impostaBlocco(Location loc, Block type, IProperty<T> property, V value) {
-		World w = loc.getWorld();
-	    
-		w.setBlockState(loc.getPos(), type.getBlockState().getBaseState().withProperty(property, value));
+	public static <T extends Comparable<T>, V extends T>  void impostaBlocco(World w, BlockPos pos, Block type, IProperty<T> property, V value) {
+		w.setBlockState(pos, type.getBlockState().getBaseState().withProperty(property, value));
 	}
 
 	/**
@@ -55,11 +55,11 @@ public class HelperFunctions {
 	 *            il tipo di essere vivente da creare.
 	 * @return l'essere vivente creato.
 	 */
-	public static EntityLiving creaEssereVivente(Location loc, Class<? extends EntityLiving> type) {
+	public static EntityLiving creaEssereVivente(World w, BlockPos pos, Class<? extends EntityLiving> type) {
 		try {
-			EntityLiving living = type.getConstructor(World.class).newInstance(loc.getWorld());
-			living.setLocationAndAngles(loc.getPosX(), loc.getPosY(), loc.getPosZ(), 0, 0);
-			loc.getWorld().spawnEntity(living);
+			EntityLiving living = type.getConstructor(World.class).newInstance(w);
+			living.setLocationAndAngles(pos.getX(), pos.getY(), pos.getZ(), 0, 0);
+			w.spawnEntity(living);
 			return living;
 		} catch (Exception e) {
 			return null;

@@ -3,12 +3,12 @@ package it.reti.minecraft.plugin.sample.commands;
 import it.reti.minecraft.plugin.sample.helpers.Command;
 import it.reti.minecraft.plugin.sample.helpers.GenericCommand;
 import it.reti.minecraft.plugin.sample.helpers.HelperFunctions;
-import it.reti.minecraft.plugin.sample.helpers.Location;
 import net.minecraft.command.ICommand;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.entity.passive.EntityCow;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.server.MinecraftServer;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 @Command(aliases = { "mandria" },
@@ -25,22 +25,20 @@ public class Mandria extends GenericCommand implements ICommand {
 		}
 		
 		EntityPlayer me = (EntityPlayer) sender;
-		Location origin = new Location(me);
+		BlockPos origin = new BlockPos(me);
+		World w = me.getEntityWorld();
 		int numMucche = Integer.parseInt(args[0]);
 
-		creaMucche(origin, 10, numMucche);
+		creaMucche(w, origin, 10, numMucche);
 	}	
 	
-	private void creaMucche(Location loc, int size, int count) {
-		World w = loc.getWorld();
-		double x = loc.getPosX();
-		double z = loc.getPosZ();
-		
-		
+	private void creaMucche(World w, BlockPos loc, int size, int count) {
 		for (int i = 0; i < count; i++) {
-			Location m = new Location(w, x + (Math.random() * size), 0, z + (Math.random() * size));
-			m.setPosY(2. + w.getHeight((int) m.getPosX(), (int) m.getPosZ()));
-			HelperFunctions.creaEssereVivente(m, EntityCow.class);
+			double x = loc.getX() + (Math.random() * size);
+			double z = loc.getZ() + (Math.random() * size);
+			double y = 2. + w.getHeight((int) x, (int) z); 
+			BlockPos m = new BlockPos(x, y, z);
+			HelperFunctions.creaEssereVivente(w, m, EntityCow.class);
 		}
 	}
 	

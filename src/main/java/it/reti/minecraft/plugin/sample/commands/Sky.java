@@ -5,7 +5,6 @@ import java.util.List;
 
 import it.reti.minecraft.plugin.sample.helpers.Command;
 import it.reti.minecraft.plugin.sample.helpers.GenericCommand;
-import it.reti.minecraft.plugin.sample.helpers.Location;
 import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommand;
 import net.minecraft.command.ICommandSender;
@@ -27,11 +26,11 @@ public class Sky extends GenericCommand implements ICommand {
 		List<EntityLiving> list = getLivingEntities(me.getEntityWorld());
 		
 		for (EntityLiving target : list) {
-			Location loc = new Location(target);
-			double y = loc.getPosY();
+			double x = target.getPosition().getX();
+			double z = target.getPosition().getZ();
 			// Aggiungi 50 alla coordinata y, porta in cielo l'essere vivente di 50 blocchi.
-			loc.setPosY(y + 50);
-			target.setPositionAndUpdate(loc.getPosX(), loc.getPosY(), loc.getPosZ());
+			double y = target.getPosition().getY() + 50;
+			target.setPositionAndUpdate(x, y, z);
 		}
 	}
 	
@@ -44,4 +43,5 @@ public class Sky extends GenericCommand implements ICommand {
 			}
 			return entities;
 	}
+	
 }

@@ -3,7 +3,6 @@ package it.reti.minecraft.plugin.sample.commands;
 import it.reti.minecraft.plugin.sample.helpers.Command;
 import it.reti.minecraft.plugin.sample.helpers.GenericCommand;
 import it.reti.minecraft.plugin.sample.helpers.HelperFunctions;
-import it.reti.minecraft.plugin.sample.helpers.Location;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockDoor.EnumDoorHalf;
 import net.minecraft.block.properties.PropertyEnum;
@@ -13,6 +12,8 @@ import net.minecraft.command.ICommandSender;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.server.MinecraftServer;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 
 @Command(aliases = { "creacasa" },
 	description = "Costruisci una semplice casa per ripararsi dai mostri!",
@@ -23,56 +24,51 @@ public class CreaCasa extends GenericCommand implements ICommand {
 	@Override
 	public void execute(MinecraftServer server, ICommandSender sender, String[] args) throws CommandException {
 		EntityPlayer me = (EntityPlayer) sender;
-		Location origin = new Location(me);
+		BlockPos origin = me.getPosition();
+		World w = me.getEntityWorld();
 
 		// Dimensioni della casa
 		int width = 5;
 		int height = 5;
 
 		// Centra la casa attorno al giocatore.
-		origin.setPosY(origin.getPosY() - 1);
-		origin.setPosZ(origin.getPosZ() - (width / 2));
-		origin.setPosX(origin.getPosX() - (width / 2));
+		origin = new BlockPos(origin.getX() - (width / 2), origin.getY() - 1, origin.getZ() - (width / 2));
 
 		// Imposta tutta l'area con un cubo di legno di quercia.
-		creaCubo(origin, 0, 0, 0, width, height, Blocks.LOG);
+		creaCubo(w, origin, 0, 0, 0, width, height, Blocks.LOG);
 		// Imposta il centro del cubo con dei blocchi d'aria (per lasciare la
 		// zona "vuota".
-		creaCubo(origin, 1, 1, 1, width - 2, height - 2, Blocks.AIR);
+		creaCubo(w, origin, 1, 1, 1, width - 2, height - 2, Blocks.AIR);
 
 		// Crea una porta nel muro
-		Location loc = new Location(origin.getWorld(), origin.getPosX() + (width / 2), origin.getPosY(),
-				origin.getPosZ());
+		BlockPos loc = new BlockPos(origin.getX() + (width / 2), origin.getY(),	origin.getZ());
 
 		// La porta viene creata attraverso la creazione di due blocchi.
 		// Due valori "magici" sono impostati per segnalare la parte bassa e
 		// qualla alta della porta.
 		PropertyEnum<EnumDoorHalf> HALF = PropertyEnum.create("half", EnumDoorHalf.class);
-		loc.setPosY(loc.getPosY() + 1);
-		HelperFunctions.impostaBlocco(loc, Blocks.OAK_DOOR, HALF, EnumDoorHalf.LOWER); //parte bassa
-		loc.setPosY(loc.getPosY() + 1);
-		HelperFunctions.impostaBlocco(loc, Blocks.OAK_DOOR, HALF, EnumDoorHalf.UPPER); //parte alta
+		loc = new BlockPos(loc.getX(), loc.getY() + 1, loc.getZ());
+		HelperFunctions.impostaBlocco(w, loc, Blocks.OAK_DOOR, HALF, EnumDoorHalf.LOWER); //parte bassa
+		loc = new BlockPos(loc.getX(), loc.getY() + 1, loc.getZ());
+		HelperFunctions.impostaBlocco(w, loc, Blocks.OAK_DOOR, HALF, EnumDoorHalf.UPPER); //parte alta
 
 		// Metti una torcia sopra la porta
-		loc.setPosY(loc.getPosY() + 1);
-		loc.setPosZ(loc.getPosZ() + 1);
-		HelperFunctions.impostaBlocco(loc, Blocks.TORCH);
+		loc = new BlockPos(loc.getX(), loc.getY() + 1, loc.getZ() + 1);
+		HelperFunctions.impostaBlocco(w, loc, Blocks.TORCH);
 	}
 
-	private void creaCubo(Location origin, int offsetX, int offsetY, int offsetZ, int width, int height, Block type) {
+	private void creaCubo(World w, BlockPos origin, int offsetX, int offsetY, int offsetZ, int width, int height, Block type) {
 		int i, j, k;
-		Location loc = new Location(origin.getWorld(), 0, 0, 0);
+		BlockPos loc = new BlockPos(0, 0, 0);
 
 		// Crea un cubo facendo tre cicli for annidati (uno per la x, uno per la
 		// y e uno per la z).
 		for (i = 0; i < width; i++) {
 			for (j = 0; j < width; j++) {
 				for (k = 0; k < height; k++) {
-					loc.setPosX(origin.getPosX() + offsetX + i);
-					loc.setPosZ(origin.getPosZ() + offsetZ + j);
-					loc.setPosY(origin.getPosY() + offsetY + k);
+					loc = new BlockPos(origin.getX() + offsetX + i, origin.getY() + offsetY + k, origin.getZ() + offsetZ + j);
 
-					HelperFunctions.impostaBlocco(loc, type);
+					HelperFunctions.impostaBlocco(w, loc, type);
 				}
 			}
 		}

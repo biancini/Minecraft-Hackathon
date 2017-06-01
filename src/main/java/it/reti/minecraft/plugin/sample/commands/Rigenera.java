@@ -9,7 +9,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.server.MinecraftServer;
 
 @Command(aliases = { "rigenera" },
-	description = "Rigenera salute per il giocatore che lo invoca.",
+	description = "Rigenera salute e elimina fame per il giocatore che lo invoca.",
 	registerInEventBus = true,
 	registerGameEvent = false)
 public class Rigenera extends GenericCommand implements ICommand {
@@ -18,6 +18,7 @@ public class Rigenera extends GenericCommand implements ICommand {
 	public void execute(MinecraftServer server, ICommandSender sender, String[] args) throws CommandException {
 		EntityPlayer me = (EntityPlayer) sender;
 		me.setHealth(me.getMaxHealth());
+		me.getFoodStats().setFoodLevel(20);
 	}
 	
 }
