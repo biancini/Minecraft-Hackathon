@@ -10,6 +10,5 @@ public @interface Command {
 	String description();
 	
 	boolean registerInEventBus() default true;
-	boolean registerGameEvent() default false;
 	
 }

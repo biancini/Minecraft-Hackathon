@@ -13,8 +13,7 @@ import net.minecraft.world.World;
 
 @Command(aliases = { "mandria" },
 	description = "Crea una mandria di mucche!",
-	registerInEventBus = true,
-	registerGameEvent = false)
+	registerInEventBus = true)
 public class Mandria extends GenericCommand implements ICommand {
 	
 	@Override
@@ -29,17 +28,16 @@ public class Mandria extends GenericCommand implements ICommand {
 		World w = me.getEntityWorld();
 		int numMucche = Integer.parseInt(args[0]);
 
-		creaMucche(w, origin, 10, numMucche);
-	}	
-	
-	private void creaMucche(World w, BlockPos loc, int size, int count) {
-		for (int i = 0; i < count; i++) {
-			double x = loc.getX() + (Math.random() * size);
-			double z = loc.getZ() + (Math.random() * size);
+		int size = 10;
+		for (int i = 0; i < numMucche; i++) {
+			double x = origin.getX() + (Math.random() * size);
+			double z = origin.getZ() + (Math.random() * size);
 			double y = 2. + w.getHeight((int) x, (int) z); 
+			
 			BlockPos m = new BlockPos(x, y, z);
+			
 			HelperFunctions.creaEssereVivente(w, m, EntityCow.class);
 		}
-	}
+	}	
 	
 }

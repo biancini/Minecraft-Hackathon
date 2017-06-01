@@ -64,7 +64,7 @@ public class SamplePlugin
 			Command ann = (Command) command.getClass().getAnnotation(Command.class);
         	if (ann == null) continue;
         	
-        	if (ann.registerInEventBus() || ann.registerGameEvent()) {
+        	if (ann.registerInEventBus()) {
         		MinecraftForge.EVENT_BUS.register(command);
         	}
         }

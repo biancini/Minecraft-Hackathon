@@ -13,8 +13,7 @@ import net.minecraft.world.World;
 
 @Command(aliases = { "sky" },
 	description = "Fa volare tutte le creature viventi del tuo mondo!",
-	registerInEventBus = true,
-	registerGameEvent = false)
+	registerInEventBus = true)
 public class Sky extends GenericCommand implements ICommand {
 	
 	@Override
@@ -26,8 +25,10 @@ public class Sky extends GenericCommand implements ICommand {
 			if (entity instanceof EntityLiving) {
 				double x = entity.getPosition().getX();
 				double z = entity.getPosition().getZ();
+				
 				// Aggiungi 50 alla coordinata y, porta in cielo l'essere vivente di 50 blocchi.
 				double y = entity.getPosition().getY() + 50;
+				
 				entity.setPositionAndUpdate(x, y, z);
 			}
 		}

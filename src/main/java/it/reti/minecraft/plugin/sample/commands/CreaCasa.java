@@ -17,8 +17,7 @@ import net.minecraft.world.World;
 
 @Command(aliases = { "creacasa" },
 	description = "Costruisci una semplice casa per ripararsi dai mostri!",
-	registerInEventBus = true,
-	registerGameEvent = false)
+	registerInEventBus = true)
 public class CreaCasa extends GenericCommand implements ICommand {
 
 	@Override
