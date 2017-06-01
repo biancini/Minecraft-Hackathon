@@ -1,8 +1,8 @@
 # Minecraft-Hackathon
 Progetto per realizzare un Hackathon che permetta di sviluppare plugin per Minecraft.
 
-Questo progetto contiene il codice Java necessario per realizzare un plugin per Minecraft utilizzando la mod Minecraft chiamata CanaryMod [https://canarymod.net/].
-La documentazione sulla libreria Canary è navigabile qui: [http://docs.visualillusionsent.net/CanaryLib/1.0-RC-3/overview-summary.html].
+Questo progetto contiene il codice Java necessario per realizzare un plugin per Minecraft utilizzando la mod Minecraft chiamata Forge [https://files.minecraftforge.net/].
+La documentazione sulla libreria Forge &egrave; navigabile qui: [http://mcforge.readthedocs.io/en/latest/].
 Il progetto &egrave; stato sviluppato con Eclipse [http://www.eclipse.org/] ma &egrave; possibile utilizzare qualsiasi IDE per sviluppare il proprio plugin.
 Per realizzare un plugin, inoltre, &egrave; necessario installare il Java Development Kit (JDK) [http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html].
 
@@ -25,7 +25,7 @@ Se si utilizza Eclipse, &egrave; possibile lanciare il server anche richiamando 
 
 ## SamplePlugin
 Questa cartella contiene i files necessari a definire un plugin di esempio che mostra alcune funzionalit&agrave; di Forge.
-In particolare il plugin implementa diverse funzionalità richiamabili con un comando dalla chat del gioco. Inoltre il plugin crea un task asincrono che viene eseguito automaticamente dal server e registra un listener in grado di percepire la presenza di evento nel gioco per effettuare delle operazioni quando si verificano determinati eventi.
+In particolare il plugin implementa diverse funzionalitÃ  richiamabili con un comando dalla chat del gioco. Inoltre il plugin crea un task asincrono che viene eseguito automaticamente dal server e registra un listener in grado di percepire la presenza di evento nel gioco per effettuare delle operazioni quando si verificano determinati eventi.
 
 Il plugin implementa diverse funzionalit&agrave; d'esempio, di seguito elencate:
 - con il comando `/creacasa` verr&agrave; creata una casa (5x5) di legno attorno al giocatore;
@@ -35,9 +35,6 @@ Il plugin implementa diverse funzionalit&agrave; d'esempio, di seguito elencate:
 - facendo click col tasto destro quando si ha selezionato il materiale pelle, verr&agrave; "sparata" una mucca infuocata che, al contatto col terreno, esploder&agrave;
 
 Il progetto pu&ograve; essere compilato come un semplice programma java, si consiglia l'utilizo di un IDE, come Eclipse, in grado di gestire automaticamente i progetti gradle.
-
-## HackathonPlugin
-Partendo dal sample plugin potete modificarlo, copiarlo e riadattarlo in modo da creare il plugin che preferite guidati solo dalla vostra fantasia!
 
 
 # Source installation information for modders
