@@ -1,8 +1,7 @@
 package it.reti.minecraft.plugin.sample.commands;
 
-import it.reti.minecraft.plugin.sample.helpers.Command;
 import it.reti.minecraft.plugin.sample.helpers.GenericCommand;
-import it.reti.minecraft.plugin.sample.helpers.HelperFunctions;
+import it.reti.minecraft.plugin.sample.helpers.MinecraftEvent;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockDoor.EnumDoorHalf;
 import net.minecraft.block.properties.PropertyEnum;
@@ -15,7 +14,7 @@ import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-@Command(aliases = { "creacasa" },
+@MinecraftEvent(aliases = { "creacasa" },
 	description = "Costruisci una semplice casa per ripararsi dai mostri!",
 	registerInEventBus = true)
 public class CreaCasa extends GenericCommand implements ICommand {
@@ -46,13 +45,13 @@ public class CreaCasa extends GenericCommand implements ICommand {
 		// qualla alta della porta.
 		PropertyEnum<EnumDoorHalf> HALF = PropertyEnum.create("half", EnumDoorHalf.class);
 		loc = new BlockPos(loc.getX(), loc.getY() + 1, loc.getZ());
-		HelperFunctions.impostaBlocco(w, loc, Blocks.OAK_DOOR, HALF, EnumDoorHalf.LOWER); //parte bassa
+		impostaBlocco(w, loc, Blocks.OAK_DOOR, HALF, EnumDoorHalf.LOWER); //parte bassa
 		loc = new BlockPos(loc.getX(), loc.getY() + 1, loc.getZ());
-		HelperFunctions.impostaBlocco(w, loc, Blocks.OAK_DOOR, HALF, EnumDoorHalf.UPPER); //parte alta
+		impostaBlocco(w, loc, Blocks.OAK_DOOR, HALF, EnumDoorHalf.UPPER); //parte alta
 
 		// Metti una torcia sopra la porta
 		loc = new BlockPos(loc.getX(), loc.getY() + 1, loc.getZ() + 1);
-		HelperFunctions.impostaBlocco(w, loc, Blocks.TORCH);
+		impostaBlocco(w, loc, Blocks.TORCH);
 	}
 
 	private void creaCubo(World w, BlockPos origin, int offsetX, int offsetY, int offsetZ, int width, int height, Block type) {
@@ -65,7 +64,7 @@ public class CreaCasa extends GenericCommand implements ICommand {
 				for (k = 0; k < height; k++) {
 					loc = new BlockPos(origin.getX() + offsetX + i, origin.getY() + offsetY + k, origin.getZ() + offsetZ + j);
 
-					HelperFunctions.impostaBlocco(w, loc, type);
+					impostaBlocco(w, loc, type);
 				}
 			}
 		}

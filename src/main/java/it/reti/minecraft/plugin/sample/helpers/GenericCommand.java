@@ -10,11 +10,11 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.math.BlockPos;
 
-public abstract class GenericCommand implements ICommand {
+public abstract class GenericCommand extends GenericExtension implements ICommand {
 	
 	@Override
 	public String getName() {
-		Command command = this.getClass().getAnnotation(Command.class);
+		MinecraftEvent command = this.getClass().getAnnotation(MinecraftEvent.class);
 		if (command != null) {
 			return command.description();
 		}
@@ -34,7 +34,7 @@ public abstract class GenericCommand implements ICommand {
 
 	@Override
 	public List<String> getAliases() {
-		Command command = this.getClass().getAnnotation(Command.class);
+		MinecraftEvent command = this.getClass().getAnnotation(MinecraftEvent.class);
 		if (command != null) {
 			List<String> aliases = new ArrayList<String>();
 			Collections.addAll(aliases, command.aliases());

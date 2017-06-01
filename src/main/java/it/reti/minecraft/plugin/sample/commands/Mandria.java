@@ -1,8 +1,7 @@
 package it.reti.minecraft.plugin.sample.commands;
 
-import it.reti.minecraft.plugin.sample.helpers.Command;
 import it.reti.minecraft.plugin.sample.helpers.GenericCommand;
-import it.reti.minecraft.plugin.sample.helpers.HelperFunctions;
+import it.reti.minecraft.plugin.sample.helpers.MinecraftEvent;
 import net.minecraft.command.ICommand;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.entity.passive.EntityCow;
@@ -11,7 +10,7 @@ import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-@Command(aliases = { "mandria" },
+@MinecraftEvent(aliases = { "mandria" },
 	description = "Crea una mandria di mucche!",
 	registerInEventBus = true)
 public class Mandria extends GenericCommand implements ICommand {
@@ -19,7 +18,7 @@ public class Mandria extends GenericCommand implements ICommand {
 	@Override
 	public void execute(MinecraftServer server, ICommandSender sender, String[] args) {
 		if (args.length != 1) {
-			HelperFunctions.sendErrorMessage(sender, "Invalid number of arguments!");
+			sendErrorMessage(sender, "Invalid number of arguments!");
 			return;
 		}
 		
@@ -36,7 +35,7 @@ public class Mandria extends GenericCommand implements ICommand {
 			
 			BlockPos m = new BlockPos(x, y, z);
 			
-			HelperFunctions.creaEssereVivente(w, m, EntityCow.class);
+			creaEssereVivente(w, m, EntityCow.class);
 		}
 	}	
 	

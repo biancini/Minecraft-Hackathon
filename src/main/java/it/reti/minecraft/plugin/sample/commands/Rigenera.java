@@ -1,14 +1,14 @@
 package it.reti.minecraft.plugin.sample.commands;
 
-import it.reti.minecraft.plugin.sample.helpers.Command;
 import it.reti.minecraft.plugin.sample.helpers.GenericCommand;
+import it.reti.minecraft.plugin.sample.helpers.MinecraftEvent;
 import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommand;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.server.MinecraftServer;
 
-@Command(aliases = { "rigenera" },
+@MinecraftEvent(aliases = { "rigenera" },
 	description = "Rigenera salute e elimina fame per il giocatore che lo invoca.",
 	registerInEventBus = true)
 public class Rigenera extends GenericCommand implements ICommand {

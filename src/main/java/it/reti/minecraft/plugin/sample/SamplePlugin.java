@@ -10,8 +10,9 @@ import it.reti.minecraft.plugin.sample.commands.CreaCasa;
 import it.reti.minecraft.plugin.sample.commands.Mandria;
 import it.reti.minecraft.plugin.sample.commands.Rigenera;
 import it.reti.minecraft.plugin.sample.commands.Sky;
-import it.reti.minecraft.plugin.sample.helpers.Command;
-import it.reti.minecraft.plugin.sample.helpers.GenericCommand;
+import it.reti.minecraft.plugin.sample.helpers.GenericExtension;
+import it.reti.minecraft.plugin.sample.helpers.MinecraftEvent;
+import it.reti.minecraft.plugin.sample.hooks.LeatherHook;
 import net.minecraft.command.ICommand;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.FMLLog;
@@ -37,7 +38,7 @@ public class SamplePlugin
     public static final String VERSION = "1.0";
 
 	public static Logger logger;
-	private List<GenericCommand> commands;
+	private List<GenericExtension> extensions;
 
 	/**
 	 * Costruttore di default per creare il plugin.
@@ -46,13 +47,12 @@ public class SamplePlugin
 	public SamplePlugin() {
 		logger = FMLLog.getLogger();
 		
-		commands = new ArrayList<GenericCommand>();
-		commands.add(new CreaCasa());
-		commands.add(new Sky());
-		commands.add(new Mandria());
-		commands.add(new Rigenera());
-		
-		//hooks.add(new LeatherHook());
+		extensions = new ArrayList<GenericExtension>();
+		extensions.add(new CreaCasa());
+		extensions.add(new Sky());
+		extensions.add(new Mandria());
+		extensions.add(new Rigenera());
+		extensions.add(new LeatherHook());
 	}
 
 	@EventHandler
@@ -60,12 +60,12 @@ public class SamplePlugin
     {
 		logger.info("Avvio il plugin.");
 		
-		for (GenericCommand command : commands) {
-			Command ann = (Command) command.getClass().getAnnotation(Command.class);
+		for (GenericExtension extension : extensions) {
+			MinecraftEvent ann = (MinecraftEvent) extension.getClass().getAnnotation(MinecraftEvent.class);
         	if (ann == null) continue;
         	
         	if (ann.registerInEventBus()) {
-        		MinecraftForge.EVENT_BUS.register(command);
+        		MinecraftForge.EVENT_BUS.register(extension);
         	}
         }
         
@@ -76,9 +76,9 @@ public class SamplePlugin
     
     @EventHandler
     public void registerCommands(FMLServerStartingEvent event) throws InstantiationException, IllegalAccessException, ClassNotFoundException {
-    	for (GenericCommand command : commands) {
-    		if (Arrays.asList(command.getClass().getInterfaces()).contains(ICommand.class)) {
-        		event.registerServerCommand(command);
+    	for (GenericExtension extension : extensions) {
+    		if (Arrays.asList(extension.getClass().getInterfaces()).contains(ICommand.class)) {
+        		event.registerServerCommand((ICommand) extension);
         	}
         }
     }

@@ -1,7 +1,7 @@
 package it.reti.minecraft.plugin.sample.commands;
 
-import it.reti.minecraft.plugin.sample.helpers.Command;
 import it.reti.minecraft.plugin.sample.helpers.GenericCommand;
+import it.reti.minecraft.plugin.sample.helpers.MinecraftEvent;
 import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommand;
 import net.minecraft.command.ICommandSender;
@@ -11,7 +11,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.world.World;
 
-@Command(aliases = { "sky" },
+@MinecraftEvent(aliases = { "sky" },
 	description = "Fa volare tutte le creature viventi del tuo mondo!",
 	registerInEventBus = true)
 public class Sky extends GenericCommand implements ICommand {
