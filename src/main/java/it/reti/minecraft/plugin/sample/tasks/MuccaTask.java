@@ -17,7 +17,7 @@ public class MuccaTask extends EntityAIBase {
 		for (int i = 0; i < 256; i++){
 			BlockPos pos = new BlockPos(cow.getPosition().getX(), i, cow.getPosition().getZ());
 			
-		    if (Block.getIdFromBlock(cow.getEntityWorld().getBlockState(pos).getBlock()) == 0){
+		    if (Block.getIdFromBlock(cow.getEntityWorld().getBlockState(pos).getBlock()) == 0) {
 		        return i;
 		    }
 		}
