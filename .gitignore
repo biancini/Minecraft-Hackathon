@@ -1,9 +1,23 @@
-.settings/
-*.class
-**/worlds
-logs
-/bin/
-target
-*.jar
+# eclipse
+bin
+*.launch
+.settings
 .metadata
-workspace
+.classpath
+.project
+
+# idea
+out
+*.ipr
+*.iws
+*.iml
+.idea
+
+# gradle
+build
+.gradle
+
+# other
+eclipse
+run
+**/target

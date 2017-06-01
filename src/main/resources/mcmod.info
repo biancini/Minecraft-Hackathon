@@ -1,0 +1,16 @@
+[
+	{
+	  "modid": "samplemod",
+	  "name": "Sample Plugin Mod",
+	  "description": "Example mod to show Forge cmomands.",
+	  "version": "${version}",
+	  "mcversion": "${mcversion}",
+	  "url": "https://github.com/biancini/Minecraft-Hackathon",
+	  "updateUrl": "https://github.com/biancini/Minecraft-Hackathon",
+	  "authorList": ["Andrea Biancini <andrea.biancini@reti.it>"],
+	  "credits": "Plugin created for the Minecraft Hackathon.",
+	  "logoFile": "",
+	  "screenshots": [],
+	  "dependencies": []
+	}
+]
