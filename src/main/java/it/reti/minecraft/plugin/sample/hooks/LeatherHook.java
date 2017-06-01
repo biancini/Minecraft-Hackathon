@@ -4,9 +4,11 @@ import it.reti.minecraft.plugin.sample.SamplePlugin;
 import it.reti.minecraft.plugin.sample.helpers.GenericExtension;
 import it.reti.minecraft.plugin.sample.helpers.MinecraftEvent;
 import it.reti.minecraft.plugin.sample.tasks.MuccaTask;
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.passive.EntityCow;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Vec3d;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
@@ -31,8 +33,18 @@ public class LeatherHook extends GenericExtension {
 			SamplePlugin.logger.info("Creato un MuccaTask per la povera mucca appena lanciata!");
 
 			// Lancia la mucca e incendiala.
-			svolazza(player, victim, 3);
+			lancia(player, victim, 3);
 			victim.setFire(600);
+		}
+	}
+	
+	private void lancia(EntityPlayer player, EntityLiving entity, double factor) {
+		Vec3d looking = player.getLookVec();
+		
+		if (looking != null) {
+			entity.motionX = looking.xCoord * factor;
+			entity.motionY = looking.yCoord * factor;
+			entity.motionZ = looking.zCoord * factor;
 		}
 	}
 }

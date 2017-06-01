@@ -4,7 +4,6 @@ import net.minecraft.block.Block;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.entity.EntityLiving;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.Style;
 import net.minecraft.util.text.TextComponentString;
@@ -62,23 +61,6 @@ public abstract class GenericExtension {
 		} catch (Exception e) {
 			return null;
 		}
-	}
-
-	/**
-	 * Metodo che fa svolazzare un entità.
-	 * 
-	 * @param player il giocatore che lo richiama.
-	 * @param entity l'entità da far svolazzare.
-	 * @param factor fattore che indica la dimensione del volo.
-	 */
-	public void svolazza(EntityPlayer player, EntityLiving entity, double factor) {
-		double pitch = (player.cameraPitch + 90.0F) * Math.PI / 180.0D;
-		double rot = (player.rotationPitch + 90.0F) * Math.PI / 180.0D;
-		double x = Math.sin(pitch) * Math.cos(rot);
-		double z = Math.sin(pitch) * Math.sin(rot);
-		double y = Math.cos(pitch);
-
-		entity.getMoveHelper().setMoveTo(x * factor, y + 0.5, z * factor, 20);
 	}
 
 	/**
