@@ -10,6 +10,15 @@ import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
+/**
+ * Classe per il comando mandria che genera una mandria di mucche attorno al giocatore che lo invoca.
+ * Il comando accetta un parametro che è il numero di mucche da creare.
+ * 
+ * La documentazione sulla libreria Forge è navigabile qui:
+ * http://mcforge.readthedocs.io/en/latest/
+ * 
+ * @author Andrea Biancini <andrea.biancini@gmail.com>
+ */
 @MinecraftEvent(aliases = { "mandria" },
 	description = "Crea una mandria di mucche!",
 	registerInEventBus = true)
@@ -38,5 +47,10 @@ public class Mandria extends GenericCommand implements ICommand {
 			creaEssereVivente(w, m, EntityCow.class);
 		}
 	}	
+	
+	@Override
+	public String getUsage(ICommandSender sender) {
+		return super.getUsage(sender) + "<num mucche>";
+	}
 	
 }

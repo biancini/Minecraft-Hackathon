@@ -11,6 +11,14 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.world.World;
 
+/**
+ * Classe per il comando sky che porta 50 blocchi nel cielo tutte le entità viventi e da lì le lascia cadere.
+ * 
+ * La documentazione sulla libreria Forge è navigabile qui:
+ * http://mcforge.readthedocs.io/en/latest/
+ * 
+ * @author Andrea Biancini <andrea.biancini@gmail.com>
+ */
 @MinecraftEvent(aliases = { "sky" },
 	description = "Fa volare tutte le creature viventi del tuo mondo!",
 	registerInEventBus = true)

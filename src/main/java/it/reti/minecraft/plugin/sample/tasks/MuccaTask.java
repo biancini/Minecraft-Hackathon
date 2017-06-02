@@ -4,15 +4,29 @@ import it.reti.minecraft.plugin.sample.SamplePlugin;
 import net.minecraft.entity.ai.EntityAIBase;
 import net.minecraft.entity.passive.EntityCow;
 
+/**
+ * Classe che implementa un task asincrono che viene eseguito dal server Minecraft
+ * in modo continuativo.
+ * 
+ * La documentazione sulla libreria Canary è navigabile qui:
+ * http://docs.visualillusionsent.net/CanaryLib/1.0-RC-3/overview-summary.html
+ * 
+ * @author Andrea Biancini <andrea.biancini@gmail.com>
+ */
 public class MuccaTask extends EntityAIBase {
 	private EntityCow cow = null;
 	private boolean executing = false;
 
+	/**
+	 * Costruttore dell'evento che accetta come parametro la mucca usata come vittima.
+	 * @param cow la mucca usata come vittima
+	 */
 	public MuccaTask(EntityCow cow) {
 		this.cow = cow;
 		this.executing = true;
 	}
 
+	@Override
 	public void updateTask() {
 		if (cow == null) return;
 		

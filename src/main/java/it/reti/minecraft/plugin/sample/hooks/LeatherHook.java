@@ -12,11 +12,25 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
+/**
+ * Classe che implementa un hook in grado di gestire l'evento di interazione
+ * (click col tasto destro del mouse) dell'utente quando nella mano principale
+ * possiede della pelle.
+ * 
+ * La documentazione sulla libreria Canary è navigabile qui:
+ * http://docs.visualillusionsent.net/CanaryLib/1.0-RC-3/overview-summary.html
+ * 
+ * @author Andrea Biancini <andrea.biancini@gmail.com>
+ */
 @MinecraftEvent(aliases = {},
 	description = "Evento che ascolta il click sull'elemento pelle.",
 	registerInEventBus = true)
 public class LeatherHook extends GenericExtension {
 
+	/**
+	 * Metodo che si sottoscrive come listener dell'evento di interazione dell'utente.
+	 * @param event l'evento di interazione
+	 */
 	@SubscribeEvent
 	public void interactLeather(PlayerInteractEvent event) {
 		// Recupera il giocatore che ha scatenato l'evento.

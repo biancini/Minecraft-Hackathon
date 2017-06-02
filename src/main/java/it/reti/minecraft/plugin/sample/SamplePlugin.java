@@ -55,9 +55,16 @@ public class SamplePlugin
 		extensions.add(new LeatherHook());
 	}
 
+	/**
+	 * Gestore di eventi che inizializza il plugin creato.
+	 * Tutte le estensioni registrate vengono fatte scorrere e quelle che hanno
+	 * nell'annotazione "registerInEventBus" vengono registrate sul gestore di eventi
+	 * di Minecraft.
+	 * 
+	 * @param event evento di inizializzazione.
+	 */
 	@EventHandler
-    public void init(FMLInitializationEvent event) throws InstantiationException, IllegalAccessException
-    {
+    public void init(FMLInitializationEvent event) {
 		logger.info("Avvio il plugin.");
 		
 		for (GenericExtension extension : extensions) {
@@ -74,8 +81,16 @@ public class SamplePlugin
 				+ "op [Username]");
     }
     
+	/**
+	 * Gestore di eventi che permette di registrare i comandi contenuti nel plugin.
+	 * Tutte le estensioni registrate vengono fatte scorrere e quelle che implementano
+	 * l'interfaccia ICommand (usata per definire i comandi di Minecraft) vengono registrate
+	 * come comandi).
+	 * 
+	 * @param event evento di inizializzazione.
+	 */
     @EventHandler
-    public void registerCommands(FMLServerStartingEvent event) throws InstantiationException, IllegalAccessException, ClassNotFoundException {
+    public void registerCommands(FMLServerStartingEvent event) {
     	for (GenericExtension extension : extensions) {
     		if (Arrays.asList(extension.getClass().getInterfaces()).contains(ICommand.class)) {
         		event.registerServerCommand((ICommand) extension);

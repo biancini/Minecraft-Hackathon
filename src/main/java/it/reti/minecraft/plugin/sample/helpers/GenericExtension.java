@@ -25,7 +25,7 @@ public abstract class GenericExtension {
 	 * Metodo per impostare un blocco in una determinata posizione.
 	 * 
 	 * @param w il mondo in cui si trova il giocatore
-	 * @param loc la posizione in cui deve essere impostate il blocco.
+	 * @param pos la posizione in cui deve essere impostate il blocco.
 	 * @param type il tipo di blocco da impostare.
 	 */
 	public void impostaBlocco(World w, BlockPos pos, Block type) {
@@ -48,7 +48,8 @@ public abstract class GenericExtension {
 	/**
 	 * Metodo che crea un essere vivente.
 	 * 
-	 * @param loc la posizione dove creare l'essere vivente.
+	 * @param w il mondo in cui si trova il giocatore
+	 * @param pos la posizione dove creare l'essere vivente.
 	 * @param type il tipo di essere vivente da creare.
 	 * @return l'essere vivente creato.
 	 */

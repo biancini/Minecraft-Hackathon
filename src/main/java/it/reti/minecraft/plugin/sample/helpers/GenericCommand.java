@@ -23,7 +23,8 @@ public abstract class GenericCommand extends GenericExtension implements IComman
 
 	@Override
 	public int compareTo(ICommand o) {
-		return 0;
+		if (o == null) return getName().compareTo(null); 
+		return getName().compareTo(o.getName());
 	}
 
 	@Override
