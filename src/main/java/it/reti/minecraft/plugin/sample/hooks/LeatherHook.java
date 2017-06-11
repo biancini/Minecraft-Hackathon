@@ -4,12 +4,14 @@ import it.reti.minecraft.plugin.sample.SamplePlugin;
 import it.reti.minecraft.plugin.sample.helpers.GenericExtension;
 import it.reti.minecraft.plugin.sample.helpers.MinecraftEvent;
 import it.reti.minecraft.plugin.sample.tasks.MuccaTask;
+import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.passive.EntityCow;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
+import net.minecraftforge.event.entity.player.PlayerInteractEvent.RightClickItem;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 /**
@@ -17,8 +19,8 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
  * (click col tasto destro del mouse) dell'utente quando nella mano principale
  * possiede della pelle.
  * 
- * La documentazione sulla libreria Canary è navigabile qui:
- * http://docs.visualillusionsent.net/CanaryLib/1.0-RC-3/overview-summary.html
+ * La documentazione sulla libreria Forge è navigabile qui:
+ * http://mcforge.readthedocs.io/en/latest/
  * 
  * @author Andrea Biancini <andrea.biancini@gmail.com>
  */
@@ -32,9 +34,16 @@ public class LeatherHook extends GenericExtension {
 	 * @param event l'evento di interazione
 	 */
 	@SubscribeEvent
-	public void interactLeather(PlayerInteractEvent event) {
+	public void interactLeather(RightClickItem event) {
+		// Se l'evento è cancellato, ignoralo.
+		if (event.isCanceled()) {
+			return;
+		}
+		
 		// Recupera il giocatore che ha scatenato l'evento.
 		EntityPlayer player = (EntityPlayer) event.getEntityPlayer();
+		// Se l'evento è generato sul server ignoralo.
+		if (player instanceof EntityPlayerSP) return;
 
 		// Controlla se il giocatore ha selezionato un elemento di tipo pelle.
 		if ("item.leather".equals(player.getHeldItemMainhand().getItem().getUnlocalizedName())) {

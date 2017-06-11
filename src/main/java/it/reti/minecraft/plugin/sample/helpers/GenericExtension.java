@@ -15,8 +15,8 @@ import net.minecraft.world.World;
  * funzioni che possono essere utilizzate per svolgere le funzionalità più
  * comuni.
  * 
- * La documentazione sulla libreria Canary è navigabile qui:
- * http://docs.visualillusionsent.net/CanaryLib/1.0-RC-3/overview-summary.html
+ * La documentazione sulla libreria Forge è navigabile qui:
+ * http://mcforge.readthedocs.io/en/latest/
  * 
  * @author Andrea Biancini <andrea.biancini@gmail.com>
  */
@@ -56,8 +56,10 @@ public abstract class GenericExtension {
 	public EntityLiving creaEssereVivente(World w, BlockPos pos, Class<? extends EntityLiving> type) {
 		try {
 			EntityLiving living = type.getConstructor(World.class).newInstance(w);
+			if (!w.spawnEntity(living)) {
+				throw new Exception("Errore durante lo spawn dell'essere vivente!");
+			}
 			living.setLocationAndAngles(pos.getX(), pos.getY(), pos.getZ(), 0, 0);
-			w.spawnEntity(living);
 			return living;
 		} catch (Exception e) {
 			return null;

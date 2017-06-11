@@ -8,8 +8,8 @@ import net.minecraft.entity.passive.EntityCow;
  * Classe che implementa un task asincrono che viene eseguito dal server Minecraft
  * in modo continuativo.
  * 
- * La documentazione sulla libreria Canary è navigabile qui:
- * http://docs.visualillusionsent.net/CanaryLib/1.0-RC-3/overview-summary.html
+ * La documentazione sulla libreria Forge è navigabile qui:
+ * http://mcforge.readthedocs.io/en/latest/
  * 
  * @author Andrea Biancini <andrea.biancini@gmail.com>
  */

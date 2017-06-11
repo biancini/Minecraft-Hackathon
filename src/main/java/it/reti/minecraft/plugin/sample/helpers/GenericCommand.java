@@ -10,6 +10,16 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.math.BlockPos;
 
+/**
+ * Classe astratta per creare un comando in Minecraft.
+ * La classe fa override dei metodi principalmente necessari a implementare un comando dando un'implementazione che esegue
+ * dei compiti di default, adatti alla maggior parte dei comandi che si può voler creare.
+ * 
+ * La documentazione sulla libreria Forge è navigabile qui:
+ * http://mcforge.readthedocs.io/en/latest/
+ * 
+ * @author Andrea Biancini <andrea.biancini@gmail.com>
+ */
 public abstract class GenericCommand extends GenericExtension implements ICommand {
 	
 	@Override
