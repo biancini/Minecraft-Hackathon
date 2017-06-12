@@ -10,7 +10,6 @@ import net.minecraft.entity.passive.EntityCow;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
-import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent.RightClickItem;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
@@ -19,7 +18,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
  * (click col tasto destro del mouse) dell'utente quando nella mano principale
  * possiede della pelle.
  * 
- * La documentazione sulla libreria Forge è navigabile qui:
+ * La documentazione sulla libreria Forge Ã¨ navigabile qui:
  * http://mcforge.readthedocs.io/en/latest/
  * 
  * @author Andrea Biancini <andrea.biancini@gmail.com>
@@ -35,14 +34,14 @@ public class LeatherHook extends GenericExtension {
 	 */
 	@SubscribeEvent
 	public void interactLeather(RightClickItem event) {
-		// Se l'evento è cancellato, ignoralo.
+		// Se l'evento Ã¨ cancellato, ignoralo.
 		if (event.isCanceled()) {
 			return;
 		}
 		
 		// Recupera il giocatore che ha scatenato l'evento.
 		EntityPlayer player = (EntityPlayer) event.getEntityPlayer();
-		// Se l'evento è generato sul server ignoralo.
+		// Se l'evento Ã¨ generato sul server ignoralo.
 		if (player instanceof EntityPlayerSP) return;
 
 		// Controlla se il giocatore ha selezionato un elemento di tipo pelle.
